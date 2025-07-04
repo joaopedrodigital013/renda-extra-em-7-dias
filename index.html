@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Como Gerar Renda Extra em 7 Dias | João Pedro</title>
+<meta name="description" content="Plano prático e completo para gerar renda extra em 7 dias usando seu celular. Ebook + bônus exclusivos." />
+<meta name="keywords" content="renda extra, home office, ebook, ganhar dinheiro, whatsapp, instagram" />
+<meta name="author" content="João Pedro Leite Carneiro" />
 <style>
   * {
     box-sizing: border-box;
@@ -13,7 +16,7 @@
     background: #f0f4f8;
     color: #2c3e50;
     margin: 0;
-    padding: 0 20px;
+    padding: 0 20px 80px; /* espaço extra para sticky button */
   }
   .container {
     max-width: 900px;
@@ -23,51 +26,66 @@
     box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1);
     padding: 30px 40px 40px;
   }
+  /* Fundo topo com gradiente */
   header {
     text-align: center;
     margin-bottom: 30px;
+    padding: 30px 0 15px;
+    background: linear-gradient(135deg, #6ba7e3 0%, #2980b9 100%);
+    border-radius: 10px 10px 0 0;
+    color: white;
   }
   header img {
     max-width: 260px;
     border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(44, 62, 80, 0.2);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    margin-bottom: 15px;
   }
   h1 {
-    color: #34495e;
-    margin: 20px 0 10px;
+    margin: 0 0 8px;
     font-weight: 700;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
   }
   p.subtitle {
-    font-size: 1.15rem;
-    color: #7f8c8d;
-    margin-top: 0;
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 500;
   }
+  /* Seções */
   h2 {
     color: #2980b9;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 6px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 8px;
     font-weight: 700;
+    font-size: 1.8rem;
   }
   ul {
-    list-style: inside disc;
-    margin-left: 0;
+    list-style: none;
     padding-left: 0;
     color: #34495e;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   ul li {
-    margin-bottom: 12px;
-    line-height: 1.5;
+    margin-bottom: 14px;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+  }
+  ul li svg {
+    flex-shrink: 0;
+    margin-right: 10px;
+    fill: #2980b9;
+    width: 20px;
+    height: 20px;
   }
   .bonus {
     background: #ecf6fc;
     border-left: 6px solid #3498db;
-    padding: 18px 22px;
-    margin-top: 30px;
-    border-radius: 6px;
+    padding: 20px 25px;
+    margin-top: 25px;
+    border-radius: 8px;
   }
   .bonus h3 {
     margin-top: 0;
@@ -77,19 +95,20 @@
   .preco {
     background: #d6eaf8;
     border-left: 6px solid #5dade2;
-    padding: 25px 20px;
-    margin-top: 40px;
-    border-radius: 6px;
+    padding: 30px 20px;
+    margin-top: 45px;
+    border-radius: 8px;
     text-align: center;
     color: #2c3e50;
     font-weight: 600;
+    font-size: 1.3rem;
   }
   .preco strong {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: #1b4f72;
   }
   .cta {
-    margin-top: 45px;
+    margin-top: 50px;
     text-align: center;
   }
   .cta a {
@@ -97,53 +116,98 @@
     color: #fff;
     text-decoration: none;
     font-weight: 700;
-    padding: 16px 36px;
+    padding: 18px 40px;
     border-radius: 50px;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     display: inline-block;
-    box-shadow: 0 8px 18px rgba(52, 152, 219, 0.6);
+    box-shadow: 0 10px 22px rgba(52, 152, 219, 0.7);
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: sticky;
+    bottom: 20px;
+    z-index: 1000;
   }
   .cta a:hover {
     background-color: #1f78c1;
-    box-shadow: 0 8px 20px rgba(31, 120, 193, 0.9);
+    box-shadow: 0 10px 30px rgba(31, 120, 193, 0.9);
   }
   /* Feedbacks em linha */
   .feedback {
-    margin-top: 50px;
+    margin-top: 60px;
   }
   .feedback h2 {
     color: #2980b9;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 6px;
-    margin-bottom: 25px;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 8px;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
   }
   .feedback-list {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
     flex-wrap: wrap;
   }
   .card {
     background: #ecf6fc;
-    border-radius: 8px;
-    padding: 20px 25px;
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+    border-radius: 10px;
+    padding: 25px 30px;
+    box-shadow: 0 6px 18px rgba(52, 152, 219, 0.25);
     font-style: italic;
     color: #2c3e50;
     width: 280px;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
   }
   .card strong {
     display: block;
-    margin-top: 12px;
+    margin-top: 15px;
     font-style: normal;
     font-weight: 700;
     color: #34495e;
   }
+  /* Sobre o autor */
+  .about-author {
+    margin-top: 70px;
+    background: #f7fbff;
+    border-left: 6px solid #3498db;
+    padding: 25px 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+  .about-author img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    box-shadow: 0 4px 14px rgba(52, 152, 219, 0.35);
+  }
+  .about-author-text {
+    color: #34495e;
+    font-size: 1.1rem;
+  }
+  /* Redes sociais */
+  .social-links {
+    margin-top: 35px;
+    text-align: center;
+  }
+  .social-links a {
+    margin: 0 12px;
+    color: #2980b9;
+    text-decoration: none;
+    font-size: 1.8rem;
+    transition: color 0.3s ease;
+  }
+  .social-links a:hover {
+    color: #1f78c1;
+  }
   /* Footer */
   footer {
-    margin-top: 60px;
+    margin-top: 80px;
     text-align: center;
     font-size: 0.85rem;
     color: #7f8c8d;
@@ -151,14 +215,21 @@
   /* Mobile */
   @media (max-width: 768px) {
     .container {
-      margin: 20px 15px 40px;
+      margin: 20px 15px 70px;
       padding: 25px 20px 30px;
     }
     header img {
       max-width: 180px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
     h1 {
-      font-size: 1.9rem;
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    .preco {
+      font-size: 1.1rem;
     }
     .preco strong {
       font-size: 1.4rem;
@@ -166,18 +237,38 @@
     .cta a {
       font-size: 1.1rem;
       padding: 14px 28px;
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 40px);
+      max-width: 400px;
+      z-index: 10000;
+      border-radius: 40px;
     }
     /* Feedback empilhado no mobile */
     .feedback-list {
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
       align-items: center;
     }
     .card {
       width: 90%;
+      max-width: 350px;
+    }
+    .about-author {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+    .about-author img {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
     }
   }
 </style>
+<!-- Ícones para os tópicos -->
 </head>
 <body>
   <div class="container">
@@ -190,10 +281,10 @@
     <section>
       <h2>✅ O que você vai aprender:</h2>
       <ul>
-        <li>Como montar sua estrutura digital do zero</li>
-        <li>Como vender pelo WhatsApp e Instagram</li>
-        <li>Estratégias para lucrar mesmo sem investir</li>
-        <li>Checklist diário + plano de ação de 7 dias</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Como montar sua estrutura digital do zero</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Como vender pelo WhatsApp e Instagram</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Estratégias para lucrar mesmo sem investir</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Checklist diário + plano de ação de 7 dias</li>
       </ul>
     </section>
 
@@ -210,9 +301,9 @@
     <section>
       <h2>🧠 Este guia é para você se:</h2>
       <ul>
-        <li>Quer uma renda extra mas não sabe por onde começar</li>
-        <li>Já tentou vender algo e não teve resultado</li>
-        <li>Deseja usar seu celular como ferramenta de lucro</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Quer uma renda extra mas não sabe por onde começar</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Já tentou vender algo e não teve resultado</li>
+        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Deseja usar seu celular como ferramenta de lucro</li>
       </ul>
     </section>
 
@@ -241,6 +332,19 @@
           <strong>— Luciana F., Salvador</strong>
         </div>
       </div>
+    </section>
+
+    <section class="about-author">
+      <img src="https://i.imgur.com/3G3BvQo.jpg" alt="João Pedro Leite Carneiro" />
+      <div class="about-author-text">
+        <h2>Sobre o autor</h2>
+        <p>Olá! Eu sou João Pedro Leite Carneiro, especialista em marketing digital e vendas pelo WhatsApp. Ajudo pessoas como você a gerar renda extra usando ferramentas simples e estratégias práticas.</p>
+      </div>
+    </section>
+
+    <section class="social-links" aria-label="Redes sociais de João Pedro">
+      <a href="https://instagram.com/joao.pedrodigital_" target="_blank" rel="noopener noreferrer" aria-label="Instagram João Pedro">📸</a>
+      <a href="https://wa.me/5513981692910" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp João Pedro">💬</a>
     </section>
 
     <footer>

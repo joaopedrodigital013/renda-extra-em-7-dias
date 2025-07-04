@@ -5,50 +5,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Como Gerar Renda Extra em 7 Dias | João Pedro</title>
 <style>
-  /* Reset básico */
   * {
     box-sizing: border-box;
   }
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fff8e1;
-    color: #5d4a00;
+    background: #f0f4f8;
+    color: #2c3e50;
     margin: 0;
-    padding: 0 15px;
+    padding: 0 20px;
   }
   .container {
-    max-width: 640px;
+    max-width: 900px;
     margin: 40px auto 60px;
-    background: #fffdfa;
+    background: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(158, 136, 34, 0.15);
-    padding: 30px 30px 40px;
+    box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1);
+    padding: 30px 40px 40px;
   }
   header {
     text-align: center;
     margin-bottom: 30px;
   }
   header img {
-    max-width: 200px;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(158, 136, 34, 0.4);
+    max-width: 260px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(44, 62, 80, 0.2);
   }
   h1 {
-    color: #8d6e00;
+    color: #34495e;
     margin: 20px 0 10px;
     font-weight: 700;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
   }
   p.subtitle {
-    font-size: 1.1rem;
-    color: #a18800;
+    font-size: 1.15rem;
+    color: #7f8c8d;
     margin-top: 0;
   }
   h2 {
-    color: #a57c00;
+    color: #2980b9;
     margin-top: 30px;
     margin-bottom: 15px;
-    border-bottom: 2px solid #fdd835;
+    border-bottom: 2px solid #3498db;
     padding-bottom: 6px;
     font-weight: 700;
   }
@@ -56,7 +55,7 @@
     list-style: inside disc;
     margin-left: 0;
     padding-left: 0;
-    color: #6d5a00;
+    color: #34495e;
     font-size: 1rem;
   }
   ul li {
@@ -64,93 +63,102 @@
     line-height: 1.5;
   }
   .bonus {
-    background: #fffde7;
-    border-left: 6px solid #fbc02d;
+    background: #ecf6fc;
+    border-left: 6px solid #3498db;
     padding: 18px 22px;
     margin-top: 30px;
     border-radius: 6px;
   }
   .bonus h3 {
     margin-top: 0;
-    color: #a57c00;
+    color: #2980b9;
     font-weight: 700;
   }
   .preco {
-    background: #fff3e0;
-    border-left: 6px solid #fdd835;
+    background: #d6eaf8;
+    border-left: 6px solid #5dade2;
     padding: 25px 20px;
     margin-top: 40px;
     border-radius: 6px;
     text-align: center;
-    color: #6d5100;
+    color: #2c3e50;
     font-weight: 600;
   }
   .preco strong {
     font-size: 1.6rem;
-    color: #a57c00;
+    color: #1b4f72;
   }
   .cta {
     margin-top: 45px;
     text-align: center;
   }
   .cta a {
-    background-color: #fdd835;
-    color: #5d4a00;
+    background-color: #3498db;
+    color: #fff;
     text-decoration: none;
     font-weight: 700;
     padding: 16px 36px;
     border-radius: 50px;
     font-size: 1.3rem;
     display: inline-block;
-    box-shadow: 0 8px 18px rgba(253, 216, 53, 0.6);
+    box-shadow: 0 8px 18px rgba(52, 152, 219, 0.6);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   .cta a:hover {
-    background-color: #c6a700;
-    color: #fff;
-    box-shadow: 0 8px 20px rgba(198, 167, 0, 0.9);
+    background-color: #1f78c1;
+    box-shadow: 0 8px 20px rgba(31, 120, 193, 0.9);
   }
-  /* Feedbacks */
+  /* Feedbacks em linha */
   .feedback {
     margin-top: 50px;
   }
   .feedback h2 {
-    color: #a57c00;
-    border-bottom: 2px solid #fdd835;
+    color: #2980b9;
+    border-bottom: 2px solid #3498db;
     padding-bottom: 6px;
     margin-bottom: 25px;
   }
+  .feedback-list {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
   .card {
-    background: #fffde7;
+    background: #ecf6fc;
     border-radius: 8px;
     padding: 20px 25px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(251, 192, 45, 0.4);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
     font-style: italic;
-    color: #6d5a00;
+    color: #2c3e50;
+    width: 280px;
+    flex-shrink: 0;
   }
   .card strong {
     display: block;
     margin-top: 12px;
     font-style: normal;
     font-weight: 700;
-    color: #8d6e00;
+    color: #34495e;
   }
   /* Footer */
   footer {
     margin-top: 60px;
     text-align: center;
     font-size: 0.85rem;
-    color: #a18800;
+    color: #7f8c8d;
   }
   /* Mobile */
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     .container {
-      margin: 20px 10px 40px;
+      margin: 20px 15px 40px;
       padding: 25px 20px 30px;
     }
+    header img {
+      max-width: 180px;
+    }
     h1 {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
     }
     .preco strong {
       font-size: 1.4rem;
@@ -159,14 +167,22 @@
       font-size: 1.1rem;
       padding: 14px 28px;
     }
+    /* Feedback empilhado no mobile */
+    .feedback-list {
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+    .card {
+      width: 90%;
+    }
   }
 </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <!-- Substitua o src abaixo pela URL da sua capa -->
-      <img src="https://i.imgur.com/3XqGpZC.jpg" alt="Capa do eBook Como Gerar Renda Extra em 7 Dias" />
+      <img src="https://i.imgur.com/EZ3v8jK.jpg" alt="Capa do eBook Como Gerar Renda Extra em 7 Dias" />
       <h1>💡 Como Gerar Renda Extra em 7 Dias</h1>
       <p class="subtitle">Descubra um plano simples e eficaz para começar a lucrar rápido usando seu celular!</p>
     </header>
@@ -211,17 +227,19 @@
 
     <section class="feedback">
       <h2>💬 O que estão dizendo:</h2>
-      <div class="card">
-        <p>“Consegui fazer minha primeira venda em 3 dias! O plano de ação é incrível 👏”</p>
-        <strong>— Amanda S., Rio de Janeiro</strong>
-      </div>
-      <div class="card">
-        <p>“Usei o roteiro do WhatsApp e fechei 2 clientes no primeiro dia. Vale cada centavo!”</p>
-        <strong>— Rafael M., São Paulo</strong>
-      </div>
-      <div class="card">
-        <p>“Já testei vários métodos, mas esse foi o único que me deu resultado rápido.”</p>
-        <strong>— Luciana F., Salvador</strong>
+      <div class="feedback-list">
+        <div class="card">
+          <p>“Consegui fazer minha primeira venda em 3 dias! O plano de ação é incrível 👏”</p>
+          <strong>— Amanda S., Rio de Janeiro</strong>
+        </div>
+        <div class="card">
+          <p>“Usei o roteiro do WhatsApp e fechei 2 clientes no primeiro dia. Vale cada centavo!”</p>
+          <strong>— Rafael M., São Paulo</strong>
+        </div>
+        <div class="card">
+          <p>“Já testei vários métodos, mas esse foi o único que me deu resultado rápido.”</p>
+          <strong>— Luciana F., Salvador</strong>
+        </div>
       </div>
     </section>
 

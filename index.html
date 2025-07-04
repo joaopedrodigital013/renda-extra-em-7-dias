@@ -4,81 +4,127 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Como Gerar Renda Extra em 7 Dias | João Pedro</title>
-
-<!-- Favicon -->
-<link rel="icon" href="https://i.imgur.com/1c3U0GM.jpeg" type="image/jpeg" />
-
+<meta name="description" content="Aprenda um plano prático para gerar renda extra em 7 dias usando seu celular. Ebook com dicas, checklist e estratégias de venda pelo WhatsApp e Instagram." />
+<meta name="author" content="João Pedro Leite Carneiro" />
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
+  /* Reset e base */
+  * {
+    box-sizing: border-box;
+  }
   body {
-    font-family: 'Inter', sans-serif;
-    background: #f7f9fc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fdf9f0;
     color: #222;
     margin: 0;
-    padding: 0 40px;
+    padding: 0 30px 60px;
+    scroll-behavior: smooth;
   }
+  a {
+    text-decoration: none;
+  }
+
+  /* Cabeçalho fixo */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fdf9f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 15px 30px;
+    z-index: 1000;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #004aad;
+  }
+
+  /* Container principal com largura maior */
   .container {
     max-width: 900px;
-    margin: 40px auto 60px;
+    margin: 100px auto 40px;
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    padding: 35px 30px 50px;
+    border-radius: 10px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+    padding: 40px 35px 50px;
+  }
+
+  /* Capa do eBook */
+  .capa {
+    display: block;
+    max-width: 300px;
+    margin: 0 auto 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+    transition: transform 0.3s ease;
+  }
+  .capa:hover {
+    transform: scale(1.05);
+  }
+
+  /* Título e subtítulo */
+  h1, h2 {
+    color: #004aad;
+    margin-bottom: 12px;
+    font-weight: 700;
   }
   h1 {
     text-align: center;
-    color: #004aad;
-    margin-bottom: 15px;
-    font-weight: 700;
     font-size: 2.4rem;
-  }
-  h2 {
-    color: #004aad;
-    margin-top: 40px;
-    margin-bottom: 18px;
-    font-weight: 600;
-    font-size: 1.5rem;
   }
   p.subtitle {
     text-align: center;
     font-size: 1.1rem;
     color: #555;
-    margin-bottom: 40px;
+    margin-top: -10px;
+    margin-bottom: 30px;
   }
+
+  /* Listas */
   ul {
     list-style: inside disc;
-    margin-left: 0;
     padding-left: 0;
     color: #333;
+    font-size: 1.1rem;
   }
   ul li {
     margin-bottom: 12px;
-    font-size: 1.1rem;
   }
+
+  /* Bloco bônus */
   .bonus {
-    background: #e1f5fe;
-    border-left: 6px solid #0288d1;
+    background: #e6f2ff;
+    border-left: 6px solid #2672ff;
     padding: 20px 25px;
-    margin-top: 25px;
-    border-radius: 5px;
+    margin-top: 35px;
+    border-radius: 6px;
   }
   .bonus h3 {
     margin-top: 0;
-    font-weight: 600;
+    color: #2672ff;
   }
+
+  /* Preço com destaque */
   .preco {
-    background: #fff3e0;
-    border-left: 6px solid #ffa726;
+    background: #fff4e1;
+    border-left: 6px solid #ff9f1c;
     padding: 25px 20px;
-    margin-top: 40px;
-    border-radius: 5px;
+    margin-top: 45px;
+    border-radius: 6px;
     text-align: center;
-  }
-  .preco strong {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
+    font-weight: 700;
     color: #e65100;
   }
+  .preco p {
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #5a3600;
+  }
+
+  /* Botão CTA */
   .cta {
     margin-top: 45px;
     text-align: center;
@@ -86,272 +132,195 @@
   .cta a {
     background-color: #25d366;
     color: #fff;
-    text-decoration: none;
     font-weight: 700;
-    padding: 18px 42px;
+    padding: 18px 40px;
     border-radius: 50px;
     font-size: 1.3rem;
     display: inline-block;
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.6);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.55);
+    transition: background-color 0.3s ease;
   }
   .cta a:hover {
     background-color: #128c4a;
-    box-shadow: 0 8px 22px rgba(18, 140, 74, 0.8);
-    transform: scale(1.05);
   }
-  .capa {
-    display: block;
-    max-width: 320px;
-    margin: 0 auto 30px;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  }
-  /* Feedback section */
+
+  /* Feedbacks lado a lado */
   .feedback {
-    margin-top: 50px;
+    margin-top: 55px;
   }
   .feedback h2 {
     margin-bottom: 30px;
   }
-  .feedback-cards {
+  .cards {
     display: flex;
-    gap: 25px;
+    gap: 24px;
+    flex-wrap: wrap;
     justify-content: center;
-    flex-wrap: nowrap;
   }
   .card {
-    background: #fff;
-    border: 1px solid #ddd;
+    background: #f0f8ff;
     border-radius: 12px;
-    padding: 25px 22px;
-    width: 280px;
-    box-shadow: 0 0 0 rgba(0,0,0,0);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    cursor: default;
+    padding: 22px 25px;
+    flex: 1 1 280px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   .card:hover {
-    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.15);
-    transform: translateY(-6px);
+    transform: translateY(-8px);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.15);
   }
   .card p {
-    font-style: italic;
     font-size: 1.05rem;
-    margin-bottom: 20px;
-    color: #333;
-    line-height: 1.4;
+    color: #0b2243;
+    margin-bottom: 14px;
   }
   .card strong {
-    display: block;
-    font-weight: 700;
-    color: #004aad;
-    font-size: 1rem;
-  }
-
-  /* FAQ section */
-  .faq {
-    margin-top: 60px;
-  }
-  .faq h2 {
-    margin-bottom: 30px;
-  }
-  .faq-item {
-    margin-bottom: 18px;
-  }
-  .faq-item strong {
-    cursor: pointer;
-    display: block;
-    background: #004aad;
-    color: #fff;
-    padding: 12px 18px;
-    border-radius: 8px;
-    user-select: none;
+    color: #003366;
     font-weight: 600;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
-  }
-  .faq-item strong:hover {
-    background: #002e70;
-  }
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 18px;
-    background: #e1f5fe;
-    border-radius: 0 0 8px 8px;
-    color: #222;
-    font-size: 1rem;
-    line-height: 1.4;
-    transition: max-height 0.4s ease, padding 0.4s ease;
-  }
-  .faq-answer.open {
-    max-height: 500px;
-    padding: 12px 18px 18px;
   }
 
-  /* Redes sociais - ícones SVG */
-  .redes {
+  /* FAQ */
+  details {
     margin-top: 50px;
-    text-align: center;
+    padding: 18px 22px;
+    background: #e0f0ff;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
   }
-  .redes a {
-    display: inline-block;
-    margin: 0 18px;
-    color: #25d366;
+  details summary {
+    font-weight: 700;
+    color: #2672ff;
+    outline: none;
+  }
+  details[open] {
+    background: #cce4ff;
+  }
+  details p {
+    margin-top: 12px;
+    color: #224477;
+  }
+
+  /* Rodapé */
+  footer {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  footer a {
+    color: #2672ff;
+    margin: 0 10px;
     transition: color 0.3s ease;
   }
-  .redes a.instagram {
-    color: #E1306C;
-  }
-  .redes a:hover {
-    filter: brightness(0.8);
-  }
-  .redes svg {
-    width: 36px;
-    height: 36px;
-    vertical-align: middle;
+  footer a:hover {
+    color: #004aad;
   }
 
   /* Responsividade */
-  @media (max-width: 900px) {
+  @media(max-width: 900px) {
     .container {
-      max-width: 95%;
-      padding: 25px 20px 40px;
+      margin: 110px 15px 40px;
+      padding: 30px 20px 40px;
     }
-    .feedback-cards {
-      flex-wrap: wrap;
-      gap: 20px;
+    .cards {
+      flex-direction: column;
+      gap: 25px;
     }
     .card {
-      width: 100%;
+      max-width: 100%;
+    }
+  }
+  @media(max-width: 400px) {
+    h1 {
+      font-size: 1.8rem;
+    }
+    .cta a {
+      padding: 15px 25px;
+      font-size: 1.1rem;
+    }
+    .capa {
+      max-width: 90%;
     }
   }
 </style>
-
 </head>
 <body>
-  <div class="container">
+<header>
+  <h1>Como Gerar Renda Extra em 7 Dias</h1>
+</header>
+<div class="container">
+  <img src="https://i.imgur.com/1c3U0GM.jpeg" alt="Capa do Ebook Como Gerar Renda Extra em 7 Dias" class="capa" />
+  
+  <p class="subtitle">Descubra um plano simples e eficaz para começar a lucrar rápido usando seu celular!</p>
 
-    <img src="https://i.imgur.com/1c3U0GM.jpeg" alt="Capa do E-book Como Gerar Renda Extra em 7 Dias" class="capa" />
+  <h2>✅ O que você vai aprender:</h2>
+  <ul>
+    <li>Como montar sua estrutura digital do zero</li>
+    <li>Como vender pelo WhatsApp e Instagram</li>
+    <li>Estratégias para lucrar mesmo sem investir</li>
+    <li>Checklist diário + plano de ação de 7 dias</li>
+  </ul>
 
-    <h1>💡 Como Gerar Renda Extra em 7 Dias</h1>
-    <p class="subtitle">Descubra um plano simples e eficaz para começar a lucrar rápido usando seu celular!</p>
-
-    <h2>✅ O que você vai aprender:</h2>
+  <div class="bonus">
+    <h3>💥 Bônus Exclusivos:</h3>
     <ul>
-      <li>Como montar sua estrutura digital do zero</li>
-      <li>Como vender pelo WhatsApp e Instagram</li>
-      <li>Estratégias para lucrar mesmo sem investir</li>
-      <li>Checklist diário + plano de ação de 7 dias</li>
+      <li>Checklist digital editável</li>
+      <li>Frases prontas para divulgar no WhatsApp</li>
+      <li>Guia de posicionamento no Instagram</li>
+      <li>Template de stories</li>
     </ul>
-
-    <div class="bonus">
-      <h3>💥 Bônus Exclusivos:</h3>
-      <ul>
-        <li>Checklist digital editável</li>
-        <li>Frases prontas para divulgar no WhatsApp</li>
-        <li>Guia de posicionamento no Instagram</li>
-        <li>Template de stories</li>
-      </ul>
-    </div>
-
-    <h2>🧠 Este guia é para você se:</h2>
-    <ul>
-      <li>Quer uma renda extra mas não sabe por onde começar</li>
-      <li>Já tentou vender algo e não teve resultado</li>
-      <li>Deseja usar seu celular como ferramenta de lucro</li>
-    </ul>
-
-    <div class="preco">
-      <p><strong>De R$ 97,00</strong> por apenas <strong>R$ 29,90</strong></p>
-      <p>Entrega imediata no seu WhatsApp ou e-mail. Compra 100% segura com garantia de 7 dias.</p>
-    </div>
-
-    <div class="cta">
-      <a href="https://wa.me/5513981692910" target="_blank" rel="noopener noreferrer">🚀 Comece a lucrar hoje mesmo!</a>
-    </div>
-
-    <section class="feedback" aria-label="Depoimentos de clientes satisfeitos">
-      <h2>💬 O que estão dizendo:</h2>
-      <div class="feedback-cards">
-        <div class="card" tabindex="0">
-          <p>“Consegui fazer minha primeira venda em 3 dias! O plano de ação é incrível 👏”</p>
-          <strong>— Amanda S., Rio de Janeiro</strong>
-        </div>
-        <div class="card" tabindex="0">
-          <p>“Usei o roteiro do WhatsApp e fechei 2 clientes no primeiro dia. Vale cada centavo!”</p>
-          <strong>— Rafael M., São Paulo</strong>
-        </div>
-        <div class="card" tabindex="0">
-          <p>“Já testei vários métodos, mas esse foi o único que me deu resultado rápido.”</p>
-          <strong>— Luciana F., Salvador</strong>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq" aria-label="Perguntas frequentes">
-      <h2>❓ Perguntas Frequentes</h2>
-      <div class="faq-item">
-        <strong tabindex="0" aria-expanded="false" aria-controls="faq1" id="faq1-label">Como recebo o eBook após a compra?</strong>
-        <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-label">
-          Você recebe o eBook por WhatsApp ou e-mail imediatamente após a confirmação do pagamento.
-        </div>
-      </div>
-      <div class="faq-item">
-        <strong tabindex="0" aria-expanded="false" aria-controls="faq2" id="faq2-label">Preciso investir dinheiro para começar?</strong>
-        <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-label">
-          Não! As estratégias são focadas para gerar lucro mesmo com investimento zero ou muito baixo.
-        </div>
-      </div>
-      <div class="faq-item">
-        <strong tabindex="0" aria-expanded="false" aria-controls="faq3" id="faq3-label">Tem garantia de reembolso?</strong>
-        <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-label">
-          Sim! Garantia de 7 dias para você testar sem riscos e pedir reembolso se não ficar satisfeito.
-        </div>
-      </div>
-    </section>
-
-    <section class="redes" aria-label="Redes sociais">
-      <a href="https://wa.me/5513981692910" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp">
-        <!-- WhatsApp SVG Icon -->
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-          <path d="M20.52 3.48A11.93 11.93 0 0012 0C5.373 0 0 5.373 0 12a11.952 11.952 0 001.68 6L0 24l6-1.68A11.949 11.949 0 0012 24c6.627 0 12-5.373 12-12 0-3.195-1.245-6.202-3.48-8.52zM12 21.6a9.59 9.59 0 01-4.92-1.44l-.354-.21-3.63 1.02 1.02-3.63-.21-.354A9.6 9.6 0 012.4 12c0-5.3 4.3-9.6 9.6-9.6s9.6 4.3 9.6 9.6-4.3 9.6-9.6 9.6z"/>
-          <path d="M17.1 14.9c-.3-.15-1.8-.9-2.1-1-.3-.15-.5-.15-.7 0-.15 0-.6.3-1 0-.4-.3-1.5-.5-2.8-1.7-1-.9-1.2-1.5-1.35-1.7-.15-.2 0-.35 0-.5 0-.15.05-.3.05-.5s-.6-1.4-.8-1.8c-.15-.4-.35-.3-.5-.3-.15 0-.3 0-.5 0-.15 0-.4.05-.6.3-.15.2-.5.5-.5 1.2 0 .7.6 1.4.7 1.5.15.2 1.25 1.95 3 2.95 1.5.8 2.1.95 2.4 1.05.3.1.5.05.7-.05.2-.1.65-.25.9-.45.25-.2.15-.4.1-.45z"/>
-        </svg>
-      </a>
-      <a href="https://instagram.com/joao.pedrodigital_" target="_blank" rel="noopener noreferrer" class="instagram" title="Instagram" aria-label="Instagram">
-        <!-- Instagram SVG Icon -->
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-          <path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5c0 3.3-2.45 5.75-5.75 5.75h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5a4.25 4.25 0 00-4.25-4.25h-8.5zm4.25 3.25a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 1.5a4 4 0 100 8 4 4 0 000-8zm5.25-.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/>
-        </svg>
-      </a>
-    </section>
-
-    <footer>
-      <p style="text-align:center; margin-top: 60px; font-size: 0.9rem; color: #999;">
-        © 2025 João Pedro Leite Carneiro. Todos os direitos reservados.
-      </p>
-    </footer>
   </div>
 
-<script>
-  // FAQ toggle
-  const faqItems = document.querySelectorAll('.faq-item strong');
-  faqItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const answer = item.nextElementSibling;
-      const isOpen = answer.classList.contains('open');
-      answer.classList.toggle('open');
-      item.setAttribute('aria-expanded', !isOpen);
-    });
-    // Enable toggle with keyboard (Enter / Space)
-    item.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        item.click();
-      }
-    });
-  });
-</script>
+  <h2>🧠 Este guia é para você se:</h2>
+  <ul>
+    <li>Quer uma renda extra mas não sabe por onde começar</li>
+    <li>Já tentou vender algo e não teve resultado</li>
+    <li>Deseja usar seu celular como ferramenta de lucro</li>
+  </ul>
+
+  <div class="preco">
+    <p><strong>De R$ 97,00</strong> por apenas <strong>R$ 29,90</strong></p>
+    <p>Entrega imediata no seu WhatsApp ou e-mail. Compra 100% segura com garantia de 7 dias.</p>
+  </div>
+
+  <div class="cta">
+    <a href="https://wa.me/5513981692910" target="_blank" rel="noopener noreferrer">🔓 Quero Começar Agora</a>
+  </div>
+
+  <div class="feedback">
+    <h2>💬 O que estão dizendo:</h2>
+    <div class="cards">
+      <div class="card">
+        <p>“Consegui fazer minha primeira venda em 3 dias! O plano de ação é incrível 👏”</p>
+        <strong>— Amanda S., Rio de Janeiro</strong>
+      </div>
+      <div class="card">
+        <p>“Usei o roteiro do WhatsApp e fechei 2 clientes no primeiro dia. Vale cada centavo!”</p>
+        <strong>— Rafael M., São Paulo</strong>
+      </div>
+      <div class="card">
+        <p>“Já testei vários métodos, mas esse foi o único que me deu resultado rápido.”</p>
+        <strong>— Luciana F., Salvador</strong>
+      </div>
+    </div>
+  </div>
+
+  <details>
+    <summary>❓ Perguntas Frequentes</summary>
+    <p><strong>Posso começar sem investimento?</strong><br>Sim! As estratégias do ebook focam também em métodos gratuitos.</p>
+    <p><strong>Preciso de experiência prévia?</strong><br>Não, o guia é para iniciantes e avançados.</p>
+    <p><strong>Qual a garantia?</strong><br>7 dias para solicitar reembolso caso não fique satisfeito.</p>
+  </details>
+</div>
+
+<footer>
+  <p>© 2025 João Pedro Leite Carneiro. Todos os direitos reservados.</p>
+  <p>
+    <a href="https://instagram.com/joao.pedrodigital_" target="_blank" rel="noopener noreferrer">Instagram</a> | 
+    <a href="#" target="_blank" rel="noopener noreferrer">Política de Privacidade</a> | 
+    <a href="#" target="_blank" rel="noopener noreferrer">Termos de Uso</a>
+  </p>
+</footer>
 </body>
 </html>

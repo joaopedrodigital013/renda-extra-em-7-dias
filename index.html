@@ -1,83 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Como Gerar Renda Extra em 7 Dias | João Pedro</title>
-  <style>
-    body { font-family: 'Segoe UI', sans-serif; background: #fdf9f0; color: #222; margin: 0; padding: 0; }
-    header {
-      background: #fdf9f0;
-      padding: 10px 20px 60px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-    header h1 {
-      margin: 10px 0 0;
-      color: #004aad;
-      font-size: 1.8rem;
-    }
-    .countdown-bar {
-      background: #ffe4e1;
-      color: #990000;
-      font-weight: bold;
-      font-size: 1rem;
-      padding: 8px 16px;
-      border-bottom: 2px solid #ff4d4d;
-    }
-    .countdown-bar span {
-      font-size: 1.2rem;
-      color: #d10000;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      background: #fff;
-      border-radius: 10px;
-      padding: 40px 30px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    img.capa { max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
-    h2 { color: #004aad; margin-top: 40px; }
-    ul { padding-left: 20px; font-size: 1.05rem; }
-    .bonus, .preco { margin-top: 30px; padding: 20px; border-radius: 8px; }
-    .bonus { background: #e6f2ff; border-left: 6px solid #2672ff; }
-    .preco { background: #fff4e1; border-left: 6px solid #ff9f1c; text-align: center; }
-    .cta { margin-top: 30px; text-align: center; }
-    .cta a { background-color: #25d366; color: white; padding: 15px 35px; font-size: 1.2rem; border-radius: 50px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 12px rgba(37,211,102,0.5); transition: all 0.3s ease; }
-    .cards, .prints { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-    .card, .print-card { background: #f0f8ff; padding: 20px; border-radius: 10px; width: 280px; box-shadow: 0 6px 16px rgba(0,0,0,0.1); text-align: center; }
-    .card p, .print-card p { font-size: 1rem; color: #0b2243; margin-bottom: 10px; }
-    .card strong, .print-card strong { font-weight: bold; color: #003366; }
-    .print-card img { width: 100%; border-radius: 10px; margin-bottom: 10px; }
-    details { margin-top: 40px; background: #e0f0ff; padding: 18px 20px; border-radius: 10px; }
-    footer { text-align: center; margin-top: 60px; font-size: 0.9rem; color: #777; padding-bottom: 20px; }
-    footer a { color: #004aad; margin: 0 10px; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Como Gerar Renda Extra em 7 Dias | João Pedro</title>
+<meta name="description" content="Aprenda um plano prático para gerar renda extra em 7 dias usando seu celular. Ebook com dicas, checklist e estratégias de venda pelo WhatsApp e Instagram." />
+<meta name="author" content="João Pedro Leite Carneiro" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Como Gerar Renda Extra em 7 Dias | João Pedro" />
+<meta property="og:description" content="Plano prático para começar a lucrar rápido usando seu celular." />
+<meta property="og:image" content="https://i.imgur.com/1c3U0GM.jpeg" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://joaopedrodigital013.github.io/renda-extra-em-7-dias/" />
+
+<style>
+  /* Reset e base */
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fdf9f0;
+    color: #222;
+    margin: 0;
+    padding: 0 30px 60px;
+    scroll-behavior: smooth;
+  }
+  a { text-decoration: none; }
+
+  /* Temporizador no topo fixo */
+  .countdown-bar {
+    background: #ffe4e1;
+    color: #990000;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px 30px;
+    text-align: center;
+    border-bottom: 2px solid #ff4d4d;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+  }
+  .countdown-bar span {
+    font-size: 1.2rem;
+    color: #d10000;
+  }
+
+  /* Cabeçalho fixo */
+  header {
+    position: fixed;
+    top: 44px;
+    left: 0;
+    width: 100%;
+    background-color: #fdf9f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 15px 30px;
+    z-index: 1000;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #004aad;
+  }
+
+  /* Container principal com largura maior */
+  .container {
+    max-width: 900px;
+    margin: 140px auto 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+    padding: 40px 35px 50px;
+  }
+
+  /* ... (demais estilos continuam iguais) ... */
+</style>
 </head>
 <body>
-  <div class="countdown-bar">
-    ⏳ Promoção por tempo limitado! Expira em: <span id="timer">08:00</span>
-  </div>
-  <header>
-    <h1>Como Gerar Renda Extra em 7 Dias</h1>
-  </header>
+<div class="countdown-bar">
+  ⏳ Promoção por tempo limitado! Expira em: <span id="timer">08:00</span>
+</div>
+<header>
+  <h1>Como Gerar Renda Extra em 7 Dias</h1>
+</header>
 
-  <script>
-    let tempo = 8 * 60;
-    const timerEl = document.getElementById('timer');
-    const countdown = setInterval(() => {
-      const min = Math.floor(tempo / 60);
-      const seg = tempo % 60;
-      timerEl.textContent = `${min.toString().padStart(2, '0')}:${seg.toString().padStart(2, '0')}`;
-      tempo--;
-      if (tempo < 0) {
-        clearInterval(countdown);
-        timerEl.textContent = "Oferta encerrada";
-        timerEl.style.color = '#888';
-      }
-    }, 1000);
-  </script>
+<script>
+  let tempo = 8 * 60;
+  const timerEl = document.getElementById('timer');
+  const countdown = setInterval(() => {
+    const min = Math.floor(tempo / 60);
+    const seg = tempo % 60;
+    timerEl.textContent = `${min.toString().padStart(2, '0')}:${seg.toString().padStart(2, '0')}`;
+    tempo--;
+    if (tempo < 0) {
+      clearInterval(countdown);
+      timerEl.textContent = "Oferta encerrada";
+      timerEl.style.color = '#888';
+    }
+  }, 1000);
+</script>

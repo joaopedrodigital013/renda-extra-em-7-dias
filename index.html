@@ -6,162 +6,223 @@
   <title>Como Gerar Renda Extra em 7 Dias | João Pedro</title>
   <meta name="description" content="Aprenda um plano prático para gerar renda extra em 7 dias usando seu celular. Ebook com dicas, checklist e estratégias de venda pelo WhatsApp e Instagram." />
   <meta name="author" content="João Pedro Leite Carneiro" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Como Gerar Renda Extra em 7 Dias | João Pedro" />
-  <meta property="og:description" content="Plano prático para começar a lucrar rápido usando seu celular." />
-  <meta property="og:image" content="https://i.imgur.com/1c3U0GM.jpeg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://joaopedrodigital013.github.io/renda-extra-em-7-dias/" />
-
   <style>
-    /* (estilos mantidos aqui — os mesmos que você já tem) */
-    /* todo o CSS original já configurado será mantido aqui */
-
-    /* Imagens de resultados */
-    .resultados {
-      margin-top: 60px;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fdf9f0;
+      color: #222;
+      padding: 0 20px 60px;
     }
-    .resultados h2 {
+    header {
+      background: #fdf9f0;
+      padding: 20px;
       text-align: center;
-      color: #004aad;
-      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
-    .resultados .prints {
+    header h1 {
+      margin: 0;
+      color: #004aad;
+      font-size: 1.8rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    img.capa {
+      max-width: 300px;
+      display: block;
+      margin: 0 auto 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    h2 {
+      color: #004aad;
+      margin-top: 40px;
+    }
+    ul {
+      padding-left: 20px;
+      font-size: 1.05rem;
+    }
+    .bonus, .preco {
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .bonus {
+      background: #e6f2ff;
+      border-left: 6px solid #2672ff;
+    }
+    .preco {
+      background: #fff4e1;
+      border-left: 6px solid #ff9f1c;
+      text-align: center;
+    }
+    .cta {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .cta a {
+      background-color: #25d366;
+      color: white;
+      padding: 15px 35px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+      transition: all 0.3s ease;
+    }
+    .cta a:hover {
+      background-color: #128c4a;
+    }
+    .feedback, .resultados {
+      margin-top: 50px;
+    }
+    .cards, .prints {
       display: flex;
+      gap: 20px;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
     }
-    .print-card {
-      background: #fffdf5;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    .card, .print-card {
+      background: #f0f8ff;
       padding: 20px;
-      max-width: 300px;
+      border-radius: 10px;
+      width: 280px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
       text-align: center;
+    }
+    .card p, .print-card p {
+      font-size: 1rem;
+      color: #0b2243;
+      margin-bottom: 10px;
+    }
+    .card strong, .print-card strong {
+      font-weight: bold;
+      color: #003366;
     }
     .print-card img {
       width: 100%;
-      border-radius: 8px;
-      margin-bottom: 12px;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
-    .print-card p {
-      font-size: 1rem;
-      color: #333;
-      font-style: italic;
+    details {
+      margin-top: 40px;
+      background: #e0f0ff;
+      padding: 18px 20px;
+      border-radius: 10px;
     }
-    .print-card strong {
-      display: block;
-      margin-top: 8px;
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    footer a {
       color: #004aad;
-      font-size: 0.95rem;
+      margin: 0 10px;
     }
   </style>
 </head>
-
 <body>
-<header>
-  <h1>Como Gerar Renda Extra em 7 Dias</h1>
-</header>
+  <header>
+    <h1>Como Gerar Renda Extra em 7 Dias</h1>
+  </header>
 
-<div class="container">
-  <!-- Capa -->
-  <img src="https://i.imgur.com/1c3U0GM.jpeg" alt="Capa do Ebook" class="capa" />
-  <p class="subtitle">Descubra um plano simples e eficaz para começar a lucrar rápido usando seu celular!</p>
+  <div class="container">
+    <img src="https://i.imgur.com/1c3U0GM.jpeg" alt="Capa do eBook" class="capa" />
+    <p style="text-align:center; font-size: 1.1rem; margin-top: -10px;">Descubra um plano simples e eficaz para começar a lucrar rápido usando seu celular!</p>
 
-  <!-- Benefícios -->
-  <h2>✅ O que você vai aprender:</h2>
-  <ul>
-    <li>Como montar sua estrutura digital do zero</li>
-    <li>Como vender pelo WhatsApp e Instagram</li>
-    <li>Estratégias para lucrar mesmo sem investir</li>
-    <li>Checklist diário + plano de ação de 7 dias</li>
-  </ul>
-
-  <!-- Bônus -->
-  <div class="bonus">
-    <h3>💥 Bônus Exclusivos:</h3>
+    <h2>✅ O que você vai aprender:</h2>
     <ul>
-      <li>Checklist digital editável</li>
-      <li>Frases prontas para divulgar no WhatsApp</li>
-      <li>Guia de posicionamento no Instagram</li>
-      <li>Template de stories</li>
+      <li>Como montar sua estrutura digital do zero</li>
+      <li>Como vender pelo WhatsApp e Instagram</li>
+      <li>Estratégias para lucrar mesmo sem investir</li>
+      <li>Checklist diário + plano de ação de 7 dias</li>
     </ul>
-  </div>
 
-  <!-- Público-alvo -->
-  <h2>🧠 Este guia é para você se:</h2>
-  <ul>
-    <li>Quer uma renda extra mas não sabe por onde começar</li>
-    <li>Já tentou vender algo e não teve resultado</li>
-    <li>Deseja usar seu celular como ferramenta de lucro</li>
-  </ul>
+    <div class="bonus">
+      <h3>💥 Bônus Exclusivos:</h3>
+      <ul>
+        <li>Checklist digital editável</li>
+        <li>Frases prontas para divulgar no WhatsApp</li>
+        <li>Guia de posicionamento no Instagram</li>
+        <li>Template de stories</li>
+      </ul>
+    </div>
 
-  <!-- Preço -->
-  <div class="preco">
-    <p><strong>De R$ 97,00</strong> por apenas <strong>R$ 29,90</strong></p>
-    <p>Entrega imediata no seu WhatsApp ou e-mail. Compra 100% segura com garantia de 7 dias.</p>
-  </div>
+    <h2>🧠 Este guia é para você se:</h2>
+    <ul>
+      <li>Quer uma renda extra mas não sabe por onde começar</li>
+      <li>Já tentou vender algo e não teve resultado</li>
+      <li>Deseja usar seu celular como ferramenta de lucro</li>
+    </ul>
 
-  <!-- Botão CTA -->
-  <div class="cta">
-    <a href="https://wa.me/5513981692910" target="_blank" rel="noopener noreferrer">🔓 Quero Começar Agora</a>
-  </div>
+    <div class="preco">
+      <p><strong>De R$ 97,00</strong> por apenas <strong>R$ 29,90</strong></p>
+      <p>Entrega imediata no seu WhatsApp ou e-mail. Compra 100% segura com garantia de 7 dias.</p>
+    </div>
 
-  <!-- Feedbacks Fictícios -->
-  <div class="feedback">
-    <h2>💬 O que estão dizendo:</h2>
-    <div class="cards">
-      <div class="card">
-        <p>“Consegui fazer minha primeira venda em 3 dias! O plano de ação é incrível 👏”</p>
-        <strong>— Amanda S., Rio de Janeiro</strong>
-      </div>
-      <div class="card">
-        <p>“Usei o roteiro do WhatsApp e fechei 2 clientes no primeiro dia. Vale cada centavo!”</p>
-        <strong>— Rafael M., São Paulo</strong>
-      </div>
-      <div class="card">
-        <p>“Já testei vários métodos, mas esse foi o único que me deu resultado rápido.”</p>
-        <strong>— Luciana F., Salvador</strong>
+    <div class="cta">
+      <a href="https://wa.me/5513981692910" target="_blank">🔓 Quero Começar Agora</a>
+    </div>
+
+    <div class="feedback">
+      <h2>💬 O que estão dizendo:</h2>
+      <div class="cards">
+        <div class="card">
+          <p>“Consegui fazer minha primeira venda em 3 dias! O plano de ação é incrível 👏”</p>
+          <strong>— Amanda S., Rio de Janeiro</strong>
+        </div>
+        <div class="card">
+          <p>“Usei o roteiro do WhatsApp e fechei 2 clientes no primeiro dia. Vale cada centavo!”</p>
+          <strong>— Rafael M., São Paulo</strong>
+        </div>
+        <div class="card">
+          <p>“Já testei vários métodos, mas esse foi o único que me deu resultado rápido.”</p>
+          <strong>— Luciana F., Salvador</strong>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Resultados Reais -->
-  <div class="resultados">
-    <h2>📸 Resultados Reais de Quem Aplicou:</h2>
-    <div class="prints">
-      <div class="print-card">
-        <img src="https://i.imgur.com/ZYrwFIO.jpeg" alt="Resultado de venda de R$ 404,13 com 22 vendas" />
-        <p>“Comecei aplicando o plano de 7 dias e já tive mais de 20 vendas pelo celular!”</p>
-        <strong>— Roberto A.</strong>
-      </div>
-      <div class="print-card">
-        <img src="https://i.imgur.com/VyIuABq.jpeg" alt="Resultado de R$ 988,13 com 39 vendas" />
-        <p>“Fiz quase mil reais só com o WhatsApp e as estratégias do guia.”</p>
-        <strong>— Camila F.</strong>
+    <div class="resultados">
+      <h2>📸 Resultados Reais de Quem Aplicou:</h2>
+      <div class="prints">
+        <div class="print-card">
+          <img src="https://i.imgur.com/ZYrwFIO.jpeg" alt="Print Kiwify 1" />
+          <p>“Comecei aplicando o plano de 7 dias e já tive mais de 20 vendas pelo celular!”</p>
+          <strong>— Roberto A.</strong>
+        </div>
+        <div class="print-card">
+          <img src="https://i.imgur.com/VyIuABq.jpeg" alt="Print Kiwify 2" />
+          <p>“Fiz quase mil reais só com o WhatsApp e as estratégias do guia.”</p>
+          <strong>— Camila F.</strong>
+        </div>
       </div>
     </div>
+
+    <details>
+      <summary>❓ Perguntas Frequentes</summary>
+      <p><strong>Preciso de experiência?</strong><br>Não, o guia é feito para iniciantes e funciona até pra quem nunca vendeu nada.</p>
+      <p><strong>Tem garantia?</strong><br>Sim! Você tem 7 dias para pedir reembolso caso não goste.</p>
+    </details>
   </div>
 
-  <!-- FAQ -->
-  <details>
-    <summary>❓ Perguntas Frequentes</summary>
-    <p><strong>Posso começar sem investimento?</strong><br>Sim! As estratégias do ebook focam também em métodos gratuitos.</p>
-    <p><strong>Preciso de experiência prévia?</strong><br>Não, o guia é para iniciantes e avançados.</p>
-    <p><strong>Qual a garantia?</strong><br>7 dias para solicitar reembolso caso não fique satisfeito.</p>
-  </details>
-</div>
-
-<!-- Rodapé -->
-<footer>
-  <p>© 2025 João Pedro Leite Carneiro. Todos os direitos reservados.</p>
-  <p>
-    <a href="https://instagram.com/joao.pedrodigital_" target="_blank">Instagram</a> | 
-    <a href="#">Política de Privacidade</a> | 
-    <a href="#">Termos de Uso</a>
-  </p>
-</footer>
+  <footer>
+    <p>© 2025 João Pedro Leite Carneiro. Todos os direitos reservados.</p>
+    <p>
+      <a href="https://instagram.com/joao.pedrodigital_" target="_blank">Instagram</a> |
+      <a href="#">Política de Privacidade</a> |
+      <a href="#">Termos de Uso</a>
+    </p>
+  </footer>
 </body>
 </html>

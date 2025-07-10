@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR">ê
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,42 +15,46 @@
 <meta property="og:url" content="https://joaopedrodigital013.github.io/renda-extra-em-7-dias/" />
 
 <style>
-  /* Reset e base */
   * { box-sizing: border-box; }
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI'ê, Tahoma, Geneva, Verdana, sans-serif;
     background: #fdf9f0;
     color: #222;
     margin: 0;
-    padding: 0 30px 60px;
+    padding: 0;
     scroll-behavior: smooth;
   }
   a { text-decoration: none; }
 
-  /* Temporizador no topo fixo */
   .countdown-bar {
-    background: #ffe4e1;
-    color: #990000;
+    background: #ff3b3b;
+    color: #fff;
     font-weight: bold;
     font-size: 1rem;
-    padding: 10px 30px;
+    padding: 12px 20px;
     text-align: center;
-    border-bottom: 2px solid #ff4d4d;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
-  .countdown-bar span {
-    font-size: 1.2rem;
+  .countdown-bar .timer {
+    background: #fff;
     color: #d10000;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1.1rem;
   }
 
-  /* Cabeçalho fixo */
   header {
     position: fixed;
-    top: 44px;
+    top: 50px;
     left: 0;
     width: 100%;
     background-color: #fdf9f0;
@@ -62,9 +66,9 @@
     margin: 0;
     font-size: 1.4rem;
     color: #004aad;
+    text-align: center;
   }
 
-  /* Container principal com largura maior */
   .container {
     max-width: 900px;
     margin: 140px auto 40px;
@@ -74,17 +78,17 @@
     padding: 40px 35px 50px;
   }
 
-  /* ... (demais estilos continuam iguais) ... */
+  /* Restante do estilo original mantido... */
 </style>
 </head>
 <body>
 <div class="countdown-bar">
-  ⏳ Promoção por tempo limitado! Expira em: <span id="timer">08:00</span>
+  🕒 Esta oferta termina em:
+  <div class="timer" id="timer">08:00</div>
 </div>
 <header>
   <h1>Como Gerar Renda Extra em 7 Dias</h1>
 </header>
-
 <script>
   let tempo = 8 * 60;
   const timerEl = document.getElementById('timer');
@@ -96,7 +100,6 @@
     if (tempo < 0) {
       clearInterval(countdown);
       timerEl.textContent = "Oferta encerrada";
-      timerEl.style.color = '#888';
     }
   }, 1000);
 </script>

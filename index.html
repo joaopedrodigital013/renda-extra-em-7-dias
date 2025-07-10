@@ -5,10 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Como Gerar Renda Extra em 7 Dias | João Pedro</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background: #fdf9f0; color: #222; margin: 0; padding: 0 20px 60px; }
-    header { background: #fdf9f0; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 999; }
-    header h1 { margin: 0; color: #004aad; font-size: 1.8rem; }
-    .container { max-width: 800px; margin: 40px auto; background: #fff; border-radius: 10px; padding: 40px 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+    body { font-family: 'Segoe UI', sans-serif; background: #fdf9f0; color: #222; margin: 0; padding: 0; }
+    header {
+      background: #fdf9f0;
+      padding: 10px 20px 60px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    header h1 {
+      margin: 10px 0 0;
+      color: #004aad;
+      font-size: 1.8rem;
+    }
+    .countdown-bar {
+      background: #ffe4e1;
+      color: #990000;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-bottom: 2px solid #ff4d4d;
+    }
+    .countdown-bar span {
+      font-size: 1.2rem;
+      color: #d10000;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
     img.capa { max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
     h2 { color: #004aad; margin-top: 40px; }
     ul { padding-left: 20px; font-size: 1.05rem; }
@@ -23,32 +54,13 @@
     .card strong, .print-card strong { font-weight: bold; color: #003366; }
     .print-card img { width: 100%; border-radius: 10px; margin-bottom: 10px; }
     details { margin-top: 40px; background: #e0f0ff; padding: 18px 20px; border-radius: 10px; }
-    footer { text-align: center; margin-top: 60px; font-size: 0.9rem; color: #777; }
+    footer { text-align: center; margin-top: 60px; font-size: 0.9rem; color: #777; padding-bottom: 20px; }
     footer a { color: #004aad; margin: 0 10px; }
-    .countdown-box {
-      background: #ffe4e1;
-      border-left: 6px solid #ff4d4d;
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 8px;
-      text-align: center;
-      font-size: 1.1rem;
-      color: #990000;
-      max-width: 800px;
-    }
-    #timer {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #d10000;
-      margin-top: 10px;
-    }
   </style>
 </head>
 <body>
-  <div class="countdown-box">
-    ⏳ <strong>ATENÇÃO:</strong> Oferta promocional por tempo limitado!<br>
-    A promoção atual termina em:
-    <div id="timer">00:08:00</div>
+  <div class="countdown-bar">
+    ⏳ Promoção por tempo limitado! Expira em: <span id="timer">08:00</span>
   </div>
   <header>
     <h1>Como Gerar Renda Extra em 7 Dias</h1>

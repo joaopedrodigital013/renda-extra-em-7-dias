@@ -29,11 +29,12 @@
       background: #ffe4e1;
       border-left: 6px solid #ff4d4d;
       padding: 20px;
-      margin-top: 30px;
+      margin: 20px auto;
       border-radius: 8px;
       text-align: center;
       font-size: 1.1rem;
       color: #990000;
+      max-width: 800px;
     }
     #timer {
       font-size: 1.8rem;
@@ -44,28 +45,27 @@
   </style>
 </head>
 <body>
+  <div class="countdown-box">
+    ⏳ <strong>ATENÇÃO:</strong> Oferta promocional por tempo limitado!<br>
+    A promoção atual termina em:
+    <div id="timer">00:08:00</div>
+  </div>
   <header>
     <h1>Como Gerar Renda Extra em 7 Dias</h1>
   </header>
-  <div class="container">
-    <div class="countdown-box">
-      ⏳ <strong>ATENÇÃO:</strong> Oferta promocional por tempo limitado!<br>
-      A promoção atual termina em:
-      <div id="timer">00:10:00</div>
-    </div>
 
-    <script>
-      let tempo = 10 * 60;
-      const timerEl = document.getElementById('timer');
-      const countdown = setInterval(() => {
-        const min = Math.floor(tempo / 60);
-        const seg = tempo % 60;
-        timerEl.textContent = `${min.toString().padStart(2, '0')}:${seg.toString().padStart(2, '0')}`;
-        tempo--;
-        if (tempo < 0) {
-          clearInterval(countdown);
-          timerEl.textContent = "Oferta encerrada";
-          timerEl.style.color = '#888';
-        }
-      }, 1000);
-    </script>
+  <script>
+    let tempo = 8 * 60;
+    const timerEl = document.getElementById('timer');
+    const countdown = setInterval(() => {
+      const min = Math.floor(tempo / 60);
+      const seg = tempo % 60;
+      timerEl.textContent = `${min.toString().padStart(2, '0')}:${seg.toString().padStart(2, '0')}`;
+      tempo--;
+      if (tempo < 0) {
+        clearInterval(countdown);
+        timerEl.textContent = "Oferta encerrada";
+        timerEl.style.color = '#888';
+      }
+    }, 1000);
+  </script>

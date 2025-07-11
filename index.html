@@ -38,9 +38,20 @@
       color: #004aad;
     }
 
+    .timer-topo {
+      background-color: #fff3cd;
+      color: #c62828;
+      text-align: center;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-top: 70px;
+    }
+
     .container {
       max-width: 900px;
-      margin: 100px auto 40px;
+      margin: 30px auto 40px;
       background: #fff;
       border-radius: 10px;
       box-shadow: 0 12px 36px rgba(0,0,0,0.12);
@@ -137,14 +148,6 @@
       transform: scale(1.05);
     }
 
-    .timer {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-top: 20px;
-      color: #c62828;
-      font-weight: bold;
-    }
-
     .feedback {
       margin-top: 55px;
     }
@@ -208,7 +211,7 @@
     footer a:hover { color: #004aad; }
 
     @media(max-width: 900px) {
-      .container { margin: 110px 15px 40px; padding: 30px 20px 40px; }
+      .container { margin: 30px 15px 40px; padding: 30px 20px 40px; }
       .cards { flex-direction: column; gap: 25px; }
       .card { max-width: 100%; }
     }
@@ -223,12 +226,17 @@
 <header>
   <h1>Como Gerar Renda Extra em 7 Dias</h1>
 </header>
+
+<div class="timer-topo">
+  ⚠️ Promoção válida por tempo limitado. Oferta expira em: <span id="countdown">15:00</span>
+</div>
+
 <div class="container">
-  <img src="https://i.imgur.com/1c3U0GM.jpeg" alt="Capa do Ebook Como Gerar Renda Extra em 7 Dias" class="capa" />
+  <img src="https://i.imgur.com/1c3U0GM.jpeg" alt="Capa do Ebook" class="capa" />
 
   <p class="subtitle">Descubra um plano simples e eficaz para começar a lucrar usando apenas seu celular!</p>
 
-  <h2>🚀 Aprenda como fazer renda extra pelo celular mesmo começando do zero:</h2>
+  <h2>🚀 Aprenda como fazer renda extra mesmo começando do zero:</h2>
   <ul>
     <li>Montar sua estrutura digital do zero</li>
     <li>Vender pelo WhatsApp e Instagram</li>
@@ -259,11 +267,7 @@
   </div>
 
   <div class="selo">
-    <img src="https://i.imgur.com/4PiEwAp.png" alt="Garantia 7 Dias" />
-  </div>
-
-  <div class="timer">
-    ⚠️ Promoção válida por tempo limitado. Oferta expira em: <span id="countdown">00:00:00</span>
+    <img src="https://joaopedrodigital013.github.io/renda-extra-em-7-dias/741c57ec-22be-44e6-885b-8e656f10cfb6.png" alt="Garantia 7 Dias" />
   </div>
 
   <div class="cta">
@@ -306,10 +310,7 @@
 </footer>
 
 <script>
-  // Cronômetro regressivo de 15 minutos
-  let countdownMinutes = 15;
-  let countdownSeconds = countdownMinutes * 60;
-
+  let countdownSeconds = 15 * 60;
   function updateCountdown() {
     const minutes = Math.floor(countdownSeconds / 60);
     const seconds = countdownSeconds % 60;
@@ -317,7 +318,6 @@
       `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     if (countdownSeconds > 0) countdownSeconds--;
   }
-
   setInterval(updateCountdown, 1000);
 </script>
 </body>

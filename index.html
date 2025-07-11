@@ -39,19 +39,21 @@
     }
 
     .timer-topo {
-      background-color: #fff3cd;
-      color: #c62828;
+      background-color: #d32f2f;
+      color: #fff;
       text-align: center;
-      padding: 12px 20px;
-      font-size: 1.1rem;
+      padding: 8px 16px;
+      font-size: 1rem;
       font-weight: bold;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin-top: 70px;
+      border-radius: 6px;
+      margin: 80px auto 25px;
+      max-width: 400px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .container {
       max-width: 900px;
-      margin: 30px auto 40px;
+      margin: 0 auto 40px;
       background: #fff;
       border-radius: 10px;
       box-shadow: 0 12px 36px rgba(0,0,0,0.12);
@@ -228,7 +230,7 @@
 </header>
 
 <div class="timer-topo">
-  ⚠️ Promoção válida por tempo limitado. Oferta expira em: <span id="countdown">15:00</span>
+  ⚠️ Oferta por tempo limitado: <span id="countdown">08:00</span>
 </div>
 
 <div class="container">
@@ -267,7 +269,7 @@
   </div>
 
   <div class="selo">
-    <img src="https://joaopedrodigital013.github.io/renda-extra-em-7-dias/741c57ec-22be-44e6-885b-8e656f10cfb6.png" alt="Garantia 7 Dias" />
+    <img src="https://joaopedrodigital013.github.io/renda-extra-em-7-dias/selo-garantia.png" alt="Garantia 7 Dias" />
   </div>
 
   <div class="cta">
@@ -310,7 +312,7 @@
 </footer>
 
 <script>
-  let countdownSeconds = 15 * 60;
+  let countdownSeconds = 8 * 60;
   function updateCountdown() {
     const minutes = Math.floor(countdownSeconds / 60);
     const seconds = countdownSeconds % 60;

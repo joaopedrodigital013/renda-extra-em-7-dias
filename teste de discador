@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Discador Automático com Upload</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 40px;
+      text-align: center;
+    }
+    h1 {
+      color: #004aad;
+    }
+    input[type="file"] {
+      margin-top: 20px;
+      font-size: 1rem;
+    }
+    #numero {
+      font-size: 2rem;
+      margin: 30px 0;
+      color: #333;
+    }
+    button {
+      font-size: 1.1rem;
+      margin: 8px;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .atendido { background: #4caf50; color: white; }
+    .nao-atendido { background: #f44336; color: white; }
+    .repetir { background: #ff9800; color: white; }
+    #historico {
+      margin-top: 40px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>📞 Discador Automático</h1>
+  <p>Carregue um arquivo .txt ou .csv com um número por linha:</p>
+  <input type="file" id="arquivo" accept=".txt,.csv">
+
+  <div id="numero">Aguardando lista...</div>
+
+  <a id="linkChamada" href="#" target="_blank">
+    <button id="btnLigar">📞 Ligar</button>
+  </a>
+  <br>
+  <button class="atendido" onclick="registrar('atendido')">✅ Atendido</button>
+  <button class="nao-atendido" onclick="registrar('nao')">❌ Não Atendeu</button>
+  <button class="repetir" onclick="registrar('repetir')">🔁 Repetir depois</button>
+
+  <div id="historico">
+    <h3>📋 Histórico:</h3>
+    <ul id="log"></ul>
+  </div>
+
+  <script>
+    let listaOriginal = [];
+    let fila = [];
+    let repetirDepois = [];
+    let numeroAtual = "";
+
+    document.getElementById("arquivo").addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const conteudo = e.target.result;
+        listaOriginal = conteudo
+          .split(/\r?\n/)
+          .map(linha => linha.trim())
+          .filter(num => num.length > 8);
+        fila = [...listaOriginal];
+        proximoNumero();
+      };
+      reader.readAsText(file);
+    });
+
+    function proximoNumero() {
+      if (fila.length === 0 && repetirDepois.length > 0) {
+        fila = [...repetirDepois];
+        repetirDepois = [];
+        alert("🔁 Recomeçando os números não atendidos...");
+      }
+
+      if (fila.length === 0) {
+        document.getElementById('numero').innerText = "✔️ Lista concluída!";
+        document.getElementById('linkChamada').href = "#";
+        return;
+      }
+
+      numeroAtual = fila.shift();
+      document.getElementById('numero').innerText = numeroAtual;
+      document.getElementById('linkChamada').href = `tel:${numeroAtual}`;
+    }
+
+    function registrar(status) {
+      if (!numeroAtual) return;
+      const log = document.getElementById("log");
+      const li = document.createElement("li");
+      li.textContent = `${numeroAtual} - ${status.toUpperCase()}`;
+      log.appendChild(li);
+
+      if (status === "repetir") {
+        repetirDepois.push(numeroAtual);
+      }
+
+      proximoNumero();
+    }
+  </script>
+</body>
+</html>

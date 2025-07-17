@@ -1,107 +1,77 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discador Automático</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #f0f4ff, #e0ecff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
+// Interface básica de discador Web com layout similar ao Assertiva Webphone
+// Tema: Laranja (abóbora) e branco
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
-      width: 100%;
-    }
+import React, { useState } from "react";
+import { PhoneCall, PhoneOff, Delete, ChevronLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #2a2a2a;
-    }
+export default function Discador() {
+  const [numero, setNumero] = useState("");
 
-    .info {
-      margin-bottom: 15px;
-      font-size: 16px;
+  const adicionarDigito = (digito) => {
+    if (numero.length < 15) {
+      setNumero(numero + digito);
     }
+  };
 
-    button {
-      background-color: #1a73e8;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      margin-bottom: 20px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      transition: 0.3s;
-    }
+  const apagarUltimo = () => {
+    setNumero(numero.slice(0, -1));
+  };
 
-    button:hover {
-      background-color: #155ab6;
-    }
+  const limpar = () => {
+    setNumero("");
+  };
 
-    .log {
-      background: #f7f7f7;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
+  const fazerLigacao = () => {
+    alert(`Ligando para ${numero}... (a funcionalidade real precisa de integração VoIP)`);
+  };
 
-    .log div {
-      margin-bottom: 10px;
-      font-size: 15px;
-    }
+  const digitos = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"];
 
-    .log .calling i {
-      color: #d32f2f;
-    }
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-orange-100 p-4">
+      <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6 text-center">
+        <h1 className="text-orange-600 text-xl font-bold mb-4">Discador Web</h1>
 
-    .log .completed i {
-      color: #2e7d32;
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h2>📞 Discador Automático</h2>
+        <div className="text-xl font-mono text-orange-900 mb-2">
+          {numero || "Digite um número"}
+        </div>
 
-    <div class="info">
-      <strong>Lista de Contatos:</strong> 3<br>
-      <strong>Contato Atual:</strong> Carlos Santos (11977770003)
+        <div className="grid grid-cols-3 gap-2 mb-4">
+          {digitos.map((d) => (
+            <Button
+              key={d}
+              onClick={() => adicionarDigito(d)}
+              className="text-white bg-orange-500 hover:bg-orange-600 text-xl h-14"
+            >
+              {d}
+            </Button>
+          ))}
+        </div>
+
+        <div className="flex justify-between">
+          <Button
+            variant="ghost"
+            onClick={apagarUltimo}
+            className="text-orange-600 hover:text-orange-800"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </Button>
+          <Button
+            onClick={fazerLigacao}
+            className="bg-green-500 hover:bg-green-600 text-white px-6 text-lg"
+          >
+            <PhoneCall className="inline w-5 h-5 mr-2" /> Ligar
+          </Button>
+          <Button
+            variant="ghost"
+            onClick={limpar}
+            className="text-orange-600 hover:text-orange-800"
+          >
+            <Delete className="w-5 h-5" />
+          </Button>
+        </div>
+      </div>
     </div>
-
-    <button onclick="iniciarChamada()">▶️ Iniciar Chamada</button>
-
-    <div class="log" id="log">
-      <div class="calling"><i class="fas fa-phone-volume"></i> Chamando João da Silva (11999990001)...</div>
-      <div class="completed"><i class="fas fa-check-circle"></i> Chamada finalizada com João da Silva</div>
-      <div class="calling"><i class="fas fa-phone-volume"></i> Chamando Maria Oliveira (11988880002)...</div>
-      <div class="completed"><i class="fas fa-check-circle"></i> Chamada finalizada com Maria Oliveira</div>
-      <div class="calling"><i class="fas fa-phone-volume"></i> Chamando Carlos Santos (11977770003)...</div>
-    </div>
-  </div>
-
-  <script>
-    function iniciarChamada() {
-      alert("Simulação de chamada iniciada!\n⚠️ Recurso de ligação real ainda não implementado.");
-    }
-  </script>
-</body>
-</html>
-
-
+  );
+}

@@ -1,381 +1,65 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Como Gerar Renda Extra em 7 Dias | João Pedro</title>
-  <meta name="description" content="Aprenda um plano prático para gerar renda extra em 7 dias usando seu celular. Ebook com dicas, checklist e estratégias de venda pelo WhatsApp e Instagram." />
-  <meta name="author" content="João Pedro Leite Carneiro" />
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import { Phone, CheckCircle, Loader2 } from "lucide-react";
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Como Gerar Renda Extra em 7 Dias | João Pedro" />
-  <meta property="og:description" content="Plano prático para começar a lucrar rápido usando seu celular." />
-  <meta property="og:image" content="https://i.imgur.com/1c3U0GM.jpeg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://joaopedrodigital013.github.io/renda-extra-em-7-dias/" />
+const contactList = [
+  { id: 1, name: "João da Silva", phone: "11999990001" },
+  { id: 2, name: "Maria Oliveira", phone: "11988880002" },
+  { id: 3, name: "Carlos Santos", phone: "11977770003" },
+];
 
-  <style>
-    /* Reset e base */
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fdf9f0;
-      color: #222;
-      margin: 0;
-      padding: 0 30px 60px;
-      scroll-behavior: smooth;
-    }
-    a {
-      text-decoration: none;
-    }
+export default function DiscadorAuto() {
+  const [current, setCurrent] = useState(0);
+  const [calling, setCalling] = useState(false);
+  const [log, setLog] = useState([]);
 
-    /* Cabeçalho fixo */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #fdf9f0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 15px 30px;
-      z-index: 1000;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.4rem;
-      color: #004aad;
-    }
+  const iniciarChamada = () => {
+    if (current >= contactList.length) return;
+    setCalling(true);
+    const contato = contactList[current];
+    setLog((prev) => [...prev, `📞 Chamando ${contato.name} (${contato.phone})...`]);
 
-    /* Temporizador */
-    #temporizador {
-      position: fixed;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background-color: #ff3b3b;
-      color: #fff;
-      font-weight: 600;
-      text-align: center;
-      padding: 12px;
-      font-size: 1.1rem;
-      z-index: 999;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
+    setTimeout(() => {
+      setLog((prev) => [...prev, `✅ ${contato.name} finalizado.`]);
+      setCurrent((prev) => prev + 1);
+      setCalling(false);
+    }, 3000);
+  };
 
-    /* Container principal */
-    .container {
-      max-width: 900px;
-      margin: 130px auto 40px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.12);
-      padding: 40px 35px 50px;
+  useEffect(() => {
+    if (!calling && current < contactList.length) {
+      iniciarChamada();
     }
+  }, [calling, current]);
 
-    .capa {
-      display: block;
-      max-width: 300px;
-      margin: 0 auto 35px;
-      border-radius: 16px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
-      transition: transform 0.3s ease;
-    }
-    .capa:hover {
-      transform: scale(1.05);
-    }
+  return (
+    <div className="max-w-2xl mx-auto p-6 space-y-6">
+      <h1 className="text-2xl font-bold">Discador Automático</h1>
+      <Card>
+        <CardContent className="space-y-4 p-4">
+          <p>Lista de Contatos: {contactList.length}</p>
+          <p>Contato Atual: {current + 1 <= contactList.length ? `${contactList[current]?.name} (${contactList[current]?.phone})` : "Todos processados."}</p>
+          <Button onClick={iniciarChamada} disabled={calling || current >= contactList.length}>
+            {calling ? (
+              <>
+                <Loader2 className="animate-spin mr-2" /> Chamando...
+              </>
+            ) : (
+              <>
+                <Phone className="mr-2" /> Iniciar Chamada
+              </>
+            )}
+          </Button>
+        </CardContent>
+      </Card>
 
-    h1, h2 {
-      color: #004aad;
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2.4rem;
-    }
-    p.subtitle {
-      text-align: center;
-      font-size: 1.1rem;
-      color: #555;
-      margin-top: -10px;
-      margin-bottom: 30px;
-    }
-
-    ul {
-      list-style: inside disc;
-      padding-left: 0;
-      color: #333;
-      font-size: 1.1rem;
-    }
-    ul li {
-      margin-bottom: 12px;
-    }
-
-    .bonus {
-      background: #e6f2ff;
-      border-left: 6px solid #2672ff;
-      padding: 20px 25px;
-      margin-top: 35px;
-      border-radius: 6px;
-    }
-    .bonus h3 {
-      margin-top: 0;
-      color: #2672ff;
-    }
-
-    .preco {
-      background: #fff4e1;
-      border-left: 6px solid #ff9f1c;
-      padding: 25px 20px;
-      margin-top: 45px;
-      border-radius: 6px;
-      text-align: center;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #e65100;
-    }
-    .preco p {
-      margin-top: 8px;
-      font-weight: 400;
-      font-size: 1rem;
-      color: #5a3600;
-    }
-
-    .cta {
-      margin-top: 45px;
-      text-align: center;
-    }
-    .cta a {
-      background-color: #25d366;
-      color: #fff;
-      font-weight: 700;
-      padding: 18px 40px;
-      border-radius: 50px;
-      font-size: 1.3rem;
-      display: inline-block;
-      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.55);
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-    .cta a:hover {
-      background-color: #128c4a;
-      transform: scale(1.05);
-    }
-
-    .cta-fixa {
-      display: none;
-    }
-
-    .feedback {
-      margin-top: 55px;
-    }
-    .feedback h2 {
-      margin-bottom: 30px;
-    }
-    .cards {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .card {
-      background: #f0f8ff;
-      border-radius: 12px;
-      padding: 22px 25px;
-      flex: 1 1 280px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.15);
-    }
-    .card p {
-      font-size: 1.05rem;
-      color: #0b2243;
-      margin-bottom: 14px;
-    }
-    .card strong {
-      color: #003366;
-      font-weight: 600;
-    }
-
-    details {
-      margin-top: 50px;
-      padding: 18px 22px;
-      background: #e0f0ff;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-    details summary {
-      font-weight: 700;
-      color: #2672ff;
-      outline: none;
-    }
-    details[open] {
-      background: #cce4ff;
-    }
-    details p {
-      margin-top: 12px;
-      color: #224477;
-    }
-
-    footer {
-      margin-top: 60px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    footer a {
-      color: #2672ff;
-      margin: 0 10px;
-      transition: color 0.3s ease;
-    }
-    footer a:hover {
-      color: #004aad;
-    }
-
-    @media(max-width: 900px) {
-      .container {
-        margin: 140px 15px 40px;
-        padding: 30px 20px 40px;
-      }
-      .cards {
-        flex-direction: column;
-        gap: 25px;
-      }
-      .card {
-        max-width: 100%;
-      }
-      .cta-fixa {
-        display: block;
-        position: fixed;
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1000;
-        background-color: #25d366;
-        color: white;
-        padding: 15px 35px;
-        border-radius: 30px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-      }
-      .cta-fixa:hover {
-        background-color: #128c4a;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Como Gerar Renda Extra em 7 Dias</h1>
-  </header>
-
-  <!-- TEMPORIZADOR -->
-  <div id="temporizador">
-    ⏰ Oferta válida por <span id="tempo">08:00</span> minutos!
-  </div>
-
-  <div class="container">
-    <img src="https://i.imgur.com/1c3U0GM.jpeg" alt="Capa do Ebook Como Gerar Renda Extra em 7 Dias" class="capa" loading="lazy" />
-    
-    <p class="subtitle">Descubra um plano simples e eficaz para começar a lucrar rápido usando seu celular!</p>
-
-    <h2>✅ O que você vai aprender:</h2>
-    <ul>
-      <li>Como montar sua estrutura digital do zero</li>
-      <li>Como vender pelo WhatsApp e Instagram</li>
-      <li>Estratégias para lucrar mesmo sem investir</li>
-      <li>Checklist diário + plano de ação de 7 dias</li>
-    </ul>
-
-    <div class="bonus">
-      <h3>💥 Bônus Exclusivos:</h3>
-      <ul>
-        <li>Checklist digital editável</li>
-        <li>Frases prontas para divulgar no WhatsApp</li>
-        <li>Guia de posicionamento no Instagram</li>
-        <li>Template de stories</li>
-      </ul>
-    </div>
-
-    <h2>🧠 Este guia é para você se:</h2>
-    <ul>
-      <li>Quer uma renda extra mas não sabe por onde começar</li>
-      <li>Já tentou vender algo e não teve resultado</li>
-      <li>Deseja usar seu celular como ferramenta de lucro</li>
-    </ul>
-
-    <div class="preco">
-      <p><strong>De R$ 97,00</strong> por apenas <strong>R$ 29,90</strong></p>
-      <p>Entrega imediata no seu WhatsApp ou e-mail. Compra 100% segura com garantia de 7 dias.</p>
-    </div>
-
-    <div class="cta">
-      <a href="https://wa.me/5513981692910" target="_blank" rel="noopener noreferrer" aria-label="Botão para começar agora pelo WhatsApp">🔓 Quero Começar Agora</a>
-    </div>
-
-    <div class="feedback">
-      <h2>💬 O que estão dizendo:</h2>
-      <div class="cards">
-        <div class="card">
-          <p>“Consegui fazer minha primeira venda em 3 dias! O plano de ação é incrível 👏”</p>
-          <strong>— Amanda S., Rio de Janeiro</strong>
-        </div>
-        <div class="card">
-          <p>“Usei o roteiro do WhatsApp e fechei 2 clientes no primeiro dia. Vale cada centavo!”</p>
-          <strong>— Rafael M., São Paulo</strong>
-        </div>
-        <div class="card">
-          <p>“Já testei vários métodos, mas esse foi o único que me deu resultado rápido.”</p>
-          <strong>— Luciana F., Salvador</strong>
-        </div>
+      <div className="bg-gray-100 rounded p-4 text-sm h-64 overflow-y-auto">
+        {log.map((item, i) => (
+          <div key={i}>{item}</div>
+        ))}
       </div>
     </div>
-
-    <details>
-      <summary>❓ Perguntas Frequentes</summary>
-      <p><strong>Posso começar sem investimento?</strong><br>Sim! As estratégias do ebook focam também em métodos gratuitos.</p>
-      <p><strong>Preciso de experiência prévia?</strong><br>Não, o guia é para iniciantes e avançados.</p>
-      <p><strong>Qual a garantia?</strong><br>7 dias para solicitar reembolso caso não fique satisfeito.</p>
-    </details>
-  </div>
-
-  <a class="cta-fixa" href="https://wa.me/5513981692910" target="_blank" rel="noopener noreferrer">Começar Agora</a>
-
-  <footer>
-    <p>© 2025 João Pedro Leite Carneiro. Todos os direitos reservados.</p>
-    <p>
-      <a href="https://instagram.com/joao.pedrodigital_" target="_blank" rel="noopener noreferrer">Instagram</a> | 
-      <a href="#" target="_blank" rel="noopener noreferrer">Política de Privacidade</a> | 
-      <a href="#" target="_blank" rel="noopener noreferrer">Termos de Uso</a>
-    </p>
-  </footer>
-
-  <!-- SCRIPT DO TEMPORIZADOR -->
-  <script>
-    let tempo = 8 * 60; // 8 minutos
-    const tempoElemento = document.getElementById("tempo");
-    const temporizador = document.getElementById("temporizador");
-
-    const atualizarTemporizador = () => {
-      const minutos = String(Math.floor(tempo / 60)).padStart(2, '0');
-      const segundos = String(tempo % 60).padStart(2, '0');
-      tempoElemento.textContent = `${minutos}:${segundos}`;
-
-      if (tempo > 0) {
-        tempo--;
-      } else {
-        temporizador.style.display = "none"; // oculta quando esgota
-      }
-    };
-
-    setInterval(atualizarTemporizador, 1000);
-    atualizarTemporizador();
-  </script>
-</body>
-</html>
+  );
+}

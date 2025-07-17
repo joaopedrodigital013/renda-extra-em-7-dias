@@ -1,65 +1,105 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
-import { Phone, CheckCircle, Loader2 } from "lucide-react";
-
-const contactList = [
-  { id: 1, name: "João da Silva", phone: "11999990001" },
-  { id: 2, name: "Maria Oliveira", phone: "11988880002" },
-  { id: 3, name: "Carlos Santos", phone: "11977770003" },
-];
-
-export default function DiscadorAuto() {
-  const [current, setCurrent] = useState(0);
-  const [calling, setCalling] = useState(false);
-  const [log, setLog] = useState([]);
-
-  const iniciarChamada = () => {
-    if (current >= contactList.length) return;
-    setCalling(true);
-    const contato = contactList[current];
-    setLog((prev) => [...prev, `📞 Chamando ${contato.name} (${contato.phone})...`]);
-
-    setTimeout(() => {
-      setLog((prev) => [...prev, `✅ ${contato.name} finalizado.`]);
-      setCurrent((prev) => prev + 1);
-      setCalling(false);
-    }, 3000);
-  };
-
-  useEffect(() => {
-    if (!calling && current < contactList.length) {
-      iniciarChamada();
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discador Automático</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f4f4f4;
+      color: #333;
     }
-  }, [calling, current]);
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .log {
+      background: #eee;
+      padding: 1rem;
+      height: 200px;
+      overflow-y: auto;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: gray;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Discador Automático</h1>
+    <p>Lista de Contatos: <span id="total"></span></p>
+    <p>Contato Atual: <span id="contato-atual">Nenhum</span></p>
+    <button id="iniciar-btn">Iniciar Chamada</button>
+    <div class="log" id="log"></div>
+  </div>
 
-  return (
-    <div className="max-w-2xl mx-auto p-6 space-y-6">
-      <h1 className="text-2xl font-bold">Discador Automático</h1>
-      <Card>
-        <CardContent className="space-y-4 p-4">
-          <p>Lista de Contatos: {contactList.length}</p>
-          <p>Contato Atual: {current + 1 <= contactList.length ? `${contactList[current]?.name} (${contactList[current]?.phone})` : "Todos processados."}</p>
-          <Button onClick={iniciarChamada} disabled={calling || current >= contactList.length}>
-            {calling ? (
-              <>
-                <Loader2 className="animate-spin mr-2" /> Chamando...
-              </>
-            ) : (
-              <>
-                <Phone className="mr-2" /> Iniciar Chamada
-              </>
-            )}
-          </Button>
-        </CardContent>
-      </Card>
+  <script>
+    const contatos = [
+      { nome: "João da Silva", telefone: "11999990001" },
+      { nome: "Maria Oliveira", telefone: "11988880002" },
+      { nome: "Carlos Santos", telefone: "11977770003" },
+    ];
 
-      <div className="bg-gray-100 rounded p-4 text-sm h-64 overflow-y-auto">
-        {log.map((item, i) => (
-          <div key={i}>{item}</div>
-        ))}
-      </div>
-    </div>
-  );
-}
+    let indice = 0;
+    let chamando = false;
+
+    const totalSpan = document.getElementById("total");
+    const atualSpan = document.getElementById("contato-atual");
+    const logDiv = document.getElementById("log");
+    const botao = document.getElementById("iniciar-btn");
+
+    totalSpan.textContent = contatos.length;
+
+    function registrarLog(texto) {
+      const linha = document.createElement("div");
+      linha.textContent = texto;
+      logDiv.appendChild(linha);
+      logDiv.scrollTop = logDiv.scrollHeight;
+    }
+
+    function iniciarChamada() {
+      if (chamando || indice >= contatos.length) return;
+
+      chamando = true;
+      botao.disabled = true;
+
+      const contato = contatos[indice];
+      atualSpan.textContent = `${contato.nome} (${contato.telefone})`;
+      registrarLog(`📞 Chamando ${contato.nome} (${contato.telefone})...`);
+
+      setTimeout(() => {
+        registrarLog(`✅ Chamada finalizada com ${contato.nome}`);
+        indice++;
+        chamando = false;
+
+        if (indice < contatos.length) {
+          iniciarChamada();
+        } else {
+          atualSpan.textContent = "Todos processados.";
+          botao.disabled = true;
+        }
+      }, 3000);
+    }
+
+    botao.addEventListener("click", iniciarChamada);
+  </script>
+</body>
+</html>
+

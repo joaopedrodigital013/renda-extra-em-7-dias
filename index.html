@@ -62,6 +62,9 @@
     .login-area {
       text-align: center;
       margin: 30px 0;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 10px;
     }
 
     input {
@@ -82,6 +85,11 @@
       border-radius: 5px;
       cursor: pointer;
       margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ffec8b;
     }
 
     .wallet {
@@ -139,6 +147,16 @@
       margin-top: 40px;
     }
 
+    #logoutBtn {
+      display: none;
+      background: crimson;
+      color: white;
+    }
+
+    #logoutBtn:hover {
+      background: #cc0000;
+    }
+
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
@@ -162,39 +180,40 @@
   <div class="container">
     <section class="login-area" id="login">
       <h2>Login / Cadastro</h2>
-      <input type="email" id="email" placeholder="E-mail">
-      <input type="password" id="senha" placeholder="Senha">
-      <button onclick="login()">Entrar</button>
+      <input type="email" id="email" placeholder="E-mail" aria-label="Campo de e-mail">
+      <input type="password" id="senha" placeholder="Senha" aria-label="Campo de senha">
+      <button onclick="login()" title="Clique para entrar">Entrar</button>
+      <button onclick="logout()" id="logoutBtn" title="Clique para sair">Sair</button>
     </section>
 
     <section class="wallet" id="wallet" style="display:none">
-      <h3>💰 Saldo: R$ <span id="saldo">1000</span></h3>
-      <button onclick="depositar()">Depositar R$100</button>
+      <h3>💰 Saldo: R$ <span id="saldo">0</span></h3>
+      <button onclick="depositar()" title="Clique para adicionar saldo">Depositar R$100</button>
     </section>
 
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="🔍 Pesquisar por provedora..." onkeyup="filtrarJogos()">
+      <input type="text" id="searchInput" placeholder="🔍 Pesquisar por provedora..." onkeyup="filtrarJogos()" aria-label="Buscar jogos por provedora">
     </div>
 
     <section class="games" id="gameList">
       <div class="game" onclick="location.href='slot-machine.html'" data-provedor="SlotMax">
-        <img src="https://img.icons8.com/fluency/96/slot-machine.png" alt="Slots">
+        <img src="https://img.icons8.com/fluency/96/slot-machine.png" alt="Máquina de Slot - Jogue agora">
         <h3>Slots</h3>
       </div>
       <div class="game" onclick="location.href='roleta.html'" data-provedor="RoletaPro">
-        <img src="https://img.icons8.com/fluency/96/roulette.png" alt="Roleta">
+        <img src="https://img.icons8.com/fluency/96/roulette.png" alt="Roleta Online">
         <h3>Roleta</h3>
       </div>
       <div class="game" onclick="location.href='blackjack.html'" data-provedor="CardMaster">
-        <img src="https://img.icons8.com/fluency/96/cards.png" alt="Blackjack">
+        <img src="https://img.icons8.com/fluency/96/cards.png" alt="Blackjack - 21">
         <h3>Blackjack</h3>
       </div>
       <div class="game" onclick="location.href='crash.html'" data-provedor="CrashGo">
-        <img src="https://img.icons8.com/fluency/96/rocket.png" alt="Crash">
+        <img src="https://img.icons8.com/fluency/96/rocket.png" alt="Crash Game">
         <h3>Crash</h3>
       </div>
       <div class="game" onclick="location.href='dados.html'" data-provedor="DiceGame">
-        <img src="https://img.icons8.com/fluency/96/dice.png" alt="Dados">
+        <img src="https://img.icons8.com/fluency/96/dice.png" alt="Jogo de Dados">
         <h3>Dados</h3>
       </div>
     </section>
@@ -205,20 +224,37 @@
   </footer>
 
   <script>
-    let saldo = 1000;
+    let saldo = 0;
     let logado = false;
+
+    window.onload = function() {
+      const saldoSalvo = localStorage.getItem('saldo');
+      if (saldoSalvo) {
+        saldo = parseInt(saldoSalvo);
+        atualizarSaldo();
+      }
+    };
 
     function login() {
       const email = document.getElementById("email").value;
       const senha = document.getElementById("senha").value;
 
-      if(email.length > 3 && senha.length > 3){
+      if(email === "teste@email.com" && senha === "1234"){
         alert("Bem-vindo ao Slot Max!");
         document.getElementById("wallet").style.display = 'block';
+        document.getElementById("logoutBtn").style.display = 'inline-block';
         logado = true;
+        atualizarSaldo();
       } else {
-        alert("Preencha os campos corretamente");
+        alert("E-mail ou senha inválidos. Use: teste@email.com / 1234");
       }
+    }
+
+    function logout() {
+      logado = false;
+      document.getElementById("wallet").style.display = 'none';
+      document.getElementById("logoutBtn").style.display = 'none';
+      alert("Você saiu com sucesso.");
     }
 
     function depositar() {
@@ -230,6 +266,7 @@
 
     function atualizarSaldo() {
       document.getElementById("saldo").textContent = saldo;
+      localStorage.setItem('saldo', saldo);
     }
 
     function filtrarJogos() {

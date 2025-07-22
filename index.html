@@ -65,6 +65,29 @@
       color: #aaa;
       font-size: 0.9em;
     }
+    .login-area {
+      text-align: center;
+      margin-top: 30px;
+    }
+    input {
+      padding: 10px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background: gold;
+      color: #001533;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .wallet {
+      margin-top: 20px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -76,6 +99,19 @@
     <a href="#crash">Crash</a>
     <a href="#dados">Dados</a>
   </nav>
+
+  <section class="login-area">
+    <h2>Login / Cadastro</h2>
+    <input type="text" id="username" placeholder="Seu nome">
+    <button onclick="login()">Entrar</button>
+  </section>
+
+  <section class="wallet" id="wallet" style="display:none">
+    <h3>💰 Saldo: R$ <span id="saldo">1000</span></h3>
+    <button onclick="depositar()">Depositar R$100</button>
+    <button onclick="apostar()">Apostar R$50</button>
+  </section>
+
   <section class="games">
     <div class="game" id="slots">
       <img src="https://img.icons8.com/fluency/96/slot-machine.png" alt="Slots">
@@ -98,8 +134,48 @@
       <h3>Dados</h3>
     </div>
   </section>
+
   <footer>
     © 2025 Slot Max Cassino. Todos os direitos reservados.
   </footer>
+
+  <script>
+    let saldo = 1000;
+
+    function login() {
+      const nome = document.getElementById("username").value;
+      if(nome.length > 1) {
+        alert("Bem-vindo, " + nome + "!");
+        document.getElementById("wallet").style.display = 'block';
+      } else {
+        alert("Digite um nome válido");
+      }
+    }
+
+    function depositar() {
+      saldo += 100;
+      atualizarSaldo();
+    }
+
+    function apostar() {
+      if(saldo >= 50){
+        const ganhou = Math.random() > 0.5;
+        if(ganhou){
+          saldo += 100;
+          alert("Você ganhou R$100!");
+        } else {
+          saldo -= 50;
+          alert("Você perdeu R$50!");
+        }
+        atualizarSaldo();
+      } else {
+        alert("Saldo insuficiente para apostar.");
+      }
+    }
+
+    function atualizarSaldo() {
+      document.getElementById("saldo").textContent = saldo;
+    }
+  </script>
 </body>
 </html>

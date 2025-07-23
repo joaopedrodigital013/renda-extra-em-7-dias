@@ -1,94 +1,97 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slot Max - Cassino Online</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <meta name="description" content="Slot Max - Cassino com jogos de Slots, Roleta, Blackjack, Crash e Dados. Cadastre-se agora!">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #002244;
-            color: white;
-            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #001f3f;
+            color: #fff;
         }
 
         header {
-            background-color: #00162e;
-            padding: 20px;
-        }
-
-        header h1 {
+            background-color: #001840;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
             color: #FFD700;
-            margin: 0;
         }
 
         nav {
-            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            background-color: #002855;
+            padding: 10px 0;
         }
 
         nav a {
-            margin: 0 10px;
+            margin: 0 15px;
             color: #fff;
             text-decoration: none;
             font-weight: bold;
         }
 
-        .login-area {
-            background-color: #013366;
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        .container {
             padding: 20px;
+            text-align: center;
         }
 
-        .login-area input[type="text"],
-        .login-area input[type="password"] {
+        .login-section {
+            margin: 20px auto;
+            background-color: #003366;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
             padding: 10px;
-            margin: 5px;
-            border-radius: 5px;
+            margin: 10px;
+            width: 40%;
             border: none;
+            border-radius: 5px;
         }
 
-        .login-area button {
-            background-color: #FFD700;
-            color: #000;
+        button {
             padding: 10px 20px;
+            background-color: #FFD700;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
         }
 
-        .login-area button:hover {
-            background-color: #ffcc00;
+        button:hover {
+            background-color: #e6c200;
         }
 
-        .search-bar input[type="text"] {
-            margin-top: 10px;
-            padding: 10px;
-            width: 300px;
-            border-radius: 5px;
-            border: none;
-        }
-
-        .cards {
+        .category-cards {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 20px;
-            gap: 15px;
+            gap: 20px;
+            margin: 30px 0;
         }
 
         .card {
-            background-color: #012d52;
-            width: 150px;
+            background-color: #003366;
             padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            width: 150px;
+            text-align: center;
+            border-radius: 10px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.3s;
         }
 
         .card:hover {
@@ -96,114 +99,114 @@
         }
 
         .card img {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
         }
 
-        .card p {
-            margin-top: 10px;
-            font-weight: bold;
-            color: #FFD700;
+        .popular-games {
+            margin-top: 40px;
         }
 
-        .jogos-container {
-            margin: 30px auto;
-            max-width: 900px;
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        .jogos-container h2 {
-            color: #FFD700;
-        }
-
-        .jogos-lista {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .jogo-item {
-            background-color: #003366;
-            padding: 15px;
+        .game-card {
+            background-color: #004080;
             border-radius: 10px;
-            width: 200px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            padding: 15px;
         }
 
-        .jogo-item h4 {
-            margin: 5px 0;
-            color: #fff;
+        .game-card img {
+            width: 100%;
+            border-radius: 8px;
         }
 
         footer {
-            background-color: #00162e;
-            color: #aaa;
-            padding: 10px;
+            text-align: center;
+            padding: 20px;
+            background-color: #001840;
             margin-top: 40px;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>Slot Max - Cassino Online</h1>
-        <nav>
-            <a href="#">Slots</a>
-            <a href="#">Roleta</a>
-            <a href="#">Blackjack</a>
-            <a href="#">Crash</a>
-            <a href="#">Dados</a>
-            <a href="#">Login</a>
-        </nav>
-    </header>
+    <header>Slot Max - Cassino Online</header>
 
-    <div class="login-area">
-        <h2>Login / Cadastro</h2>
-        <input type="text" placeholder="E-mail">
-        <input type="password" placeholder="Senha">
-        <button>Entrar</button>
-        <div class="search-bar">
+    <nav>
+        <a href="#">Slots</a>
+        <a href="#">Roleta</a>
+        <a href="#">Blackjack</a>
+        <a href="#">Crash</a>
+        <a href="#">Dados</a>
+        <a href="#">Login</a>
+    </nav>
+
+    <div class="container">
+        <div class="login-section">
+            <h2>Login / Cadastro</h2>
+            <input type="text" placeholder="Seu e-mail">
+            <input type="password" placeholder="Senha">
+            <button onclick="alert('Funcionalidade de login ainda em desenvolvimento.')">Entrar</button><br>
             <input type="text" placeholder="Pesquisar por provedora...">
         </div>
-    </div>
 
-    <div class="cards">
-        <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/869/869636.png" alt="Slots"><p>Slots</p></div>
-        <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/3097/3097074.png" alt="Roleta"><p>Roleta</p></div>
-        <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="Blackjack"><p>Blackjack</p></div>
-        <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/2942/2942170.png" alt="Crash"><p>Crash</p></div>
-        <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/4551/4551579.png" alt="Dados"><p>Dados</p></div>
-    </div>
+        <div class="category-cards">
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3917/3917768.png" alt="Slots">
+                <p>Slots</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/4219/4219706.png" alt="Roleta">
+                <p>Roleta</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/4252/4252670.png" alt="Blackjack">
+                <p>Blackjack</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/5089/5089944.png" alt="Crash">
+                <p>Crash</p>
+            </div>
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/7436/7436869.png" alt="Dados">
+                <p>Dados</p>
+            </div>
+        </div>
 
-    <div class="jogos-container">
-        <h2>Jogos Populares</h2>
-        <div class="jogos-lista">
-            <div class="jogo-item">
-                <h4>Sweet Bonanza</h4>
-                <p>Provedora: Pragmatic Play</p>
-            </div>
-            <div class="jogo-item">
-                <h4>Gates of Olympus</h4>
-                <p>Provedora: Pragmatic Play</p>
-            </div>
-            <div class="jogo-item">
-                <h4>Lightning Roulette</h4>
-                <p>Provedora: Evolution</p>
-            </div>
-            <div class="jogo-item">
-                <h4>Aviator</h4>
-                <p>Provedora: Spribe</p>
-            </div>
-            <div class="jogo-item">
-                <h4>Blackjack Classic</h4>
-                <p>Provedora: Evolution</p>
+        <div class="popular-games">
+            <h3>Jogos Populares</h3>
+            <div class="games-grid">
+                <div class="game-card">
+                    <img src="https://slotcatalog.com/img/game/500x500/Sweet-Bonanza.png" alt="Sweet Bonanza">
+                    <p><strong>Sweet Bonanza</strong><br>Provedora: Pragmatic Play</p>
+                </div>
+                <div class="game-card">
+                    <img src="https://slotcatalog.com/img/game/500x500/Gates-of-Olympus.png" alt="Gates of Olympus">
+                    <p><strong>Gates of Olympus</strong><br>Provedora: Pragmatic Play</p>
+                </div>
+                <div class="game-card">
+                    <img src="https://slotcatalog.com/img/game/500x500/Lightning-Roulette.png" alt="Lightning Roulette">
+                    <p><strong>Lightning Roulette</strong><br>Provedora: Evolution</p>
+                </div>
+                <div class="game-card">
+                    <img src="https://slotcatalog.com/img/game/500x500/Aviator.png" alt="Aviator">
+                    <p><strong>Aviator</strong><br>Provedora: Spribe</p>
+                </div>
+                <div class="game-card">
+                    <img src="https://slotcatalog.com/img/game/500x500/Blackjack-Classic.png" alt="Blackjack Classic">
+                    <p><strong>Blackjack Classic</strong><br>Provedora: Evolution</p>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        &copy; 2025 Slot Max Cassino. Todos os direitos reservados.
+        © 2025 Slot Max Cassino. Todos os direitos reservados.
     </footer>
 </body>
-
 </html>

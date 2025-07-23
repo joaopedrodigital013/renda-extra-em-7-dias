@@ -1,212 +1,130 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slot Max - Cassino Online</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #001f3f;
-            color: #fff;
-        }
-
-        header {
-            background-color: #001840;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            color: #FFD700;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #002855;
-            padding: 10px 0;
-        }
-
-        nav a {
-            margin: 0 15px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #FFD700;
-        }
-
-        .container {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .login-section {
-            margin: 20px auto;
-            background-color: #003366;
-            padding: 20px;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            padding: 10px;
-            margin: 10px;
-            width: 40%;
-            border: none;
-            border-radius: 5px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #FFD700;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #e6c200;
-        }
-
-        .category-cards {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .card {
-            background-color: #003366;
-            padding: 20px;
-            width: 150px;
-            text-align: center;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        .card img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .popular-games {
-            margin-top: 40px;
-        }
-
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .game-card {
-            background-color: #004080;
-            border-radius: 10px;
-            padding: 15px;
-        }
-
-        .game-card img {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #001840;
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slot Max - Cassino Online</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/10688/10688279.png" />
+  <style>
+    body {
+      background-color: #0b1e3c;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .navbar {
+      background-color: #081630;
+    }
+    .navbar-brand {
+      color: gold;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .nav-link {
+      color: white;
+    }
+    .nav-link:hover {
+      color: gold;
+    }
+    .login-container {
+      max-width: 400px;
+      margin: 40px auto;
+      background-color: #122544;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .btn-warning {
+      width: 100%;
+    }
+    .game-card {
+      background-color: #10233e;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      transition: transform 0.3s;
+      height: 100%;
+    }
+    .game-card:hover {
+      transform: scale(1.05);
+    }
+    .game-card img {
+      width: 100%;
+      border-radius: 10px;
+      height: 150px;
+      object-fit: cover;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      background-color: #081630;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
-
 <body>
-    <header>Slot Max - Cassino Online</header>
-
-    <nav>
-        <a href="#">Slots</a>
-        <a href="#">Roleta</a>
-        <a href="#">Blackjack</a>
-        <a href="#">Crash</a>
-        <a href="#">Dados</a>
-        <a href="#">Login</a>
-    </nav>
-
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <div class="login-section">
-            <h2>Login / Cadastro</h2>
-            <input type="text" placeholder="Seu e-mail">
-            <input type="password" placeholder="Senha">
-            <button onclick="alert('Funcionalidade de login ainda em desenvolvimento.')">Entrar</button><br>
-            <input type="text" placeholder="Pesquisar por provedora...">
-        </div>
-
-        <div class="category-cards">
-            <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/3917/3917768.png" alt="Slots">
-                <p>Slots</p>
-            </div>
-            <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/4219/4219706.png" alt="Roleta">
-                <p>Roleta</p>
-            </div>
-            <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/4252/4252670.png" alt="Blackjack">
-                <p>Blackjack</p>
-            </div>
-            <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5089/5089944.png" alt="Crash">
-                <p>Crash</p>
-            </div>
-            <div class="card">
-                <img src="https://cdn-icons-png.flaticon.com/512/7436/7436869.png" alt="Dados">
-                <p>Dados</p>
-            </div>
-        </div>
-
-        <div class="popular-games">
-            <h3>Jogos Populares</h3>
-            <div class="games-grid">
-                <div class="game-card">
-                    <img src="https://slotcatalog.com/img/game/500x500/Sweet-Bonanza.png" alt="Sweet Bonanza">
-                    <p><strong>Sweet Bonanza</strong><br>Provedora: Pragmatic Play</p>
-                </div>
-                <div class="game-card">
-                    <img src="https://slotcatalog.com/img/game/500x500/Gates-of-Olympus.png" alt="Gates of Olympus">
-                    <p><strong>Gates of Olympus</strong><br>Provedora: Pragmatic Play</p>
-                </div>
-                <div class="game-card">
-                    <img src="https://slotcatalog.com/img/game/500x500/Lightning-Roulette.png" alt="Lightning Roulette">
-                    <p><strong>Lightning Roulette</strong><br>Provedora: Evolution</p>
-                </div>
-                <div class="game-card">
-                    <img src="https://slotcatalog.com/img/game/500x500/Aviator.png" alt="Aviator">
-                    <p><strong>Aviator</strong><br>Provedora: Spribe</p>
-                </div>
-                <div class="game-card">
-                    <img src="https://slotcatalog.com/img/game/500x500/Blackjack-Classic.png" alt="Blackjack Classic">
-                    <p><strong>Blackjack Classic</strong><br>Provedora: Evolution</p>
-                </div>
-            </div>
-        </div>
+      <a class="navbar-brand" href="#">Slot Max - Cassino Online</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#slots">Slots</a></li>
+          <li class="nav-item"><a class="nav-link" href="#roleta">Roleta</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blackjack">Blackjack</a></li>
+          <li class="nav-item"><a class="nav-link" href="#crash">Crash</a></li>
+          <li class="nav-item"><a class="nav-link" href="#dados">Dados</a></li>
+          <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <footer>
-        © 2025 Slot Max Cassino. Todos os direitos reservados.
-    </footer>
+  <!-- Login Section -->
+  <div class="login-container" id="login">
+    <h4 class="text-center mb-3">Login / Cadastro</h4>
+    <input type="email" placeholder="Digite seu e-mail" class="form-control mb-2" />
+    <input type="password" placeholder="Senha" class="form-control mb-3" />
+    <button class="btn btn-warning">Entrar</button>
+  </div>
+
+  <!-- Jogos Populares -->
+  <div class="container mt-5">
+    <h3 class="text-center mb-4">Jogos Populares</h3>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://img-cdn.xy138.com/xy138/slot/pragmaticplay/sweetbonanza.jpg" alt="Sweet Bonanza" />
+          <h5 class="mt-2">Sweet Bonanza</h5>
+          <p>Provedora: Pragmatic Play</p>
+          <a href="https://www.pragmaticplay.com/en/games/sweet-bonanza/" target="_blank" class="btn btn-sm btn-outline-light">Jogar</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://img-cdn.xy138.com/xy138/slot/pragmaticplay/gatesofolympus.jpg" alt="Gates of Olympus" />
+          <h5 class="mt-2">Gates of Olympus</h5>
+          <p>Provedora: Pragmatic Play</p>
+          <a href="https://www.pragmaticplay.com/en/games/gates-of-olympus/" target="_blank" class="btn btn-sm btn-outline-light">Jogar</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="game-card">
+          <img src="https://cdn.turbocasino.com/uploads/games/lightning-roulette.jpg" alt="Lightning Roulette" />
+          <h5 class="mt-2">Lightning Roulette</h5>
+          <p>Provedora: Evolution</p>
+          <a href="https://www.evolution.com/games/lightning-roulette" target="_blank" class="btn btn-sm btn-outline-light">Jogar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Slot Max Cassino. Todos os direitos reservados.
+  </footer>
+
 </body>
 </html>
+

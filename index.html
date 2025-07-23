@@ -1,261 +1,209 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slot Max - Cassino Online</title>
-  <link rel="icon" href="https://img.icons8.com/fluency/48/slot-machine.png">
-  <meta name="description" content="Slot Max é um cassino online com jogos como slots, roleta, blackjack e crash. Aproveite agora!">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --azul-escuro: #001F3F;
-      --azul-medio: #003366;
-      --azul-claro: #012B52;
-      --dourado: gold;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom right, var(--azul-escuro), var(--azul-medio));
-      color: white;
-    }
-    header {
-      background: #001533;
-      padding: 20px;
-      text-align: center;
-      color: var(--dourado);
-      font-size: 2em;
-      font-weight: 700;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-    }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      background: #002244;
-      padding: 10px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    nav a:hover {
-      color: var(--dourado);
-    }
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-    }
-    .login-area { text-align: center; margin: 30px 0; }
-    input {
-      padding: 10px;
-      margin: 5px;
-      border: none;
-      border-radius: 5px;
-      max-width: 300px;
-      width: 80%;
-    }
-    button {
-      padding: 10px 20px;
-      background: var(--dourado);
-      color: #001533;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: 0.2s;
-    }
-    button:hover {
-      background: #ffd700;
-      transform: scale(1.05);
-    }
-    .wallet { text-align: center; margin: 20px 0; }
-    .games {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .game {
-      background: var(--azul-claro);
-      border-radius: 10px;
-      text-align: center;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.2s;
-      cursor: pointer;
-    }
-    .game:hover {
-      transform: scale(1.05);
-      background: #01406F;
-    }
-    .game h3 {
-      color: var(--dourado);
-      margin-top: 10px;
-      font-size: 1.1em;
-    }
-    .search-bar { text-align: center; margin-top: 20px; }
-    .search-bar input {
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-      border-radius: 5px;
-      border: none;
-    }
-    footer {
-      background: #001533;
-      text-align: center;
-      padding: 20px;
-      color: #aaa;
-      font-size: 0.9em;
-      margin-top: 40px;
-    }
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-    .game-content {
-      margin-top: 40px;
-      padding: 20px;
-      background: #012B52;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    }
-    .game-content h2 {
-      color: var(--dourado);
-    }
-    .game-content p {
-      font-size: 1.1em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Max - Cassino Online</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="description" content="Slot Max - Cassino com jogos de Slots, Roleta, Blackjack, Crash e Dados. Cadastre-se agora!">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #002244;
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            background-color: #00162e;
+            padding: 20px;
+        }
+
+        header h1 {
+            color: #FFD700;
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-area {
+            background-color: #013366;
+            padding: 20px;
+        }
+
+        .login-area input[type="text"],
+        .login-area input[type="password"] {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .login-area button {
+            background-color: #FFD700;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .login-area button:hover {
+            background-color: #ffcc00;
+        }
+
+        .search-bar input[type="text"] {
+            margin-top: 10px;
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .card {
+            background-color: #012d52;
+            width: 150px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .card p {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .jogos-container {
+            margin: 30px auto;
+            max-width: 900px;
+        }
+
+        .jogos-container h2 {
+            color: #FFD700;
+        }
+
+        .jogos-lista {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .jogo-item {
+            background-color: #003366;
+            padding: 15px;
+            border-radius: 10px;
+            width: 200px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .jogo-item h4 {
+            margin: 5px 0;
+            color: #fff;
+        }
+
+        footer {
+            background-color: #00162e;
+            color: #aaa;
+            padding: 10px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
+
 <body>
-  <header>Slot Max - Cassino Online</header>
+    <header>
+        <h1>Slot Max - Cassino Online</h1>
+        <nav>
+            <a href="#">Slots</a>
+            <a href="#">Roleta</a>
+            <a href="#">Blackjack</a>
+            <a href="#">Crash</a>
+            <a href="#">Dados</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
 
-  <nav>
-    <a href="#slots">Slots</a>
-    <a href="#roleta">Roleta</a>
-    <a href="#blackjack">Blackjack</a>
-    <a href="#crash">Crash</a>
-    <a href="#dados">Dados</a>
-    <a href="#login">Login</a>
-  </nav>
-
-  <div class="container">
-    <section class="login-area" id="login">
-      <h2>Login / Cadastro</h2>
-      <input type="email" id="email" placeholder="E-mail">
-      <input type="password" id="senha" placeholder="Senha">
-      <button onclick="login()">Entrar</button>
-    </section>
-
-    <section class="wallet" id="wallet" style="display:none">
-      <h3>Saldo: R$ <span id="saldo">1000</span></h3>
-      <button onclick="depositar()">Depositar R$100</button>
-    </section>
-
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Pesquisar por provedora..." onkeyup="filtrarJogos()">
+    <div class="login-area">
+        <h2>Login / Cadastro</h2>
+        <input type="text" placeholder="E-mail">
+        <input type="password" placeholder="Senha">
+        <button>Entrar</button>
+        <div class="search-bar">
+            <input type="text" placeholder="Pesquisar por provedora...">
+        </div>
     </div>
 
-    <section class="games" id="gameList">
-      <div class="game" onclick="mostrarJogo('slots')" data-provedor="PP">
-        <img src="https://img.icons8.com/fluency/96/slot-machine.png" alt="Slots">
-        <h3>Slots</h3>
-      </div>
-      <div class="game" onclick="mostrarJogo('roleta')" data-provedor="PG">
-        <img src="https://img.icons8.com/fluency/96/roulette.png" alt="Roleta">
-        <h3>Roleta</h3>
-      </div>
-      <div class="game" onclick="mostrarJogo('blackjack')" data-provedor="CardMaster">
-        <img src="https://img.icons8.com/fluency/96/cards.png" alt="Blackjack">
-        <h3>Blackjack</h3>
-      </div>
-      <div class="game" onclick="mostrarJogo('crash')" data-provedor="CrashGo">
-        <img src="https://img.icons8.com/fluency/96/rocket.png" alt="Crash">
-        <h3>Crash</h3>
-      </div>
-      <div class="game" onclick="mostrarJogo('dados')" data-provedor="DiceGame">
-        <img src="https://img.icons8.com/fluency/96/dice.png" alt="Dados">
-        <h3>Dados</h3>
-      </div>
-    </section>
+    <div class="cards">
+        <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/869/869636.png" alt="Slots"><p>Slots</p></div>
+        <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/3097/3097074.png" alt="Roleta"><p>Roleta</p></div>
+        <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="Blackjack"><p>Blackjack</p></div>
+        <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/2942/2942170.png" alt="Crash"><p>Crash</p></div>
+        <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/4551/4551579.png" alt="Dados"><p>Dados</p></div>
+    </div>
 
-    <section class="game-content" id="gameContent" style="display: none">
-      <h2 id="gameTitle"></h2>
-      <p id="gameDescription"></p>
-    </section>
-  </div>
+    <div class="jogos-container">
+        <h2>Jogos Populares</h2>
+        <div class="jogos-lista">
+            <div class="jogo-item">
+                <h4>Sweet Bonanza</h4>
+                <p>Provedora: Pragmatic Play</p>
+            </div>
+            <div class="jogo-item">
+                <h4>Gates of Olympus</h4>
+                <p>Provedora: Pragmatic Play</p>
+            </div>
+            <div class="jogo-item">
+                <h4>Lightning Roulette</h4>
+                <p>Provedora: Evolution</p>
+            </div>
+            <div class="jogo-item">
+                <h4>Aviator</h4>
+                <p>Provedora: Spribe</p>
+            </div>
+            <div class="jogo-item">
+                <h4>Blackjack Classic</h4>
+                <p>Provedora: Evolution</p>
+            </div>
+        </div>
+    </div>
 
-  <footer>
-    © 2025 Slot Max Cassino. Todos os direitos reservados.
-  </footer>
-
-  <script>
-    let saldo = 1000;
-    let logado = false;
-
-    function login() {
-      const email = document.getElementById("email").value;
-      const senha = document.getElementById("senha").value;
-
-      if(email.length > 3 && senha.length > 3){
-        alert("Bem-vindo ao Slot Max!");
-        document.getElementById("wallet").style.display = 'block';
-        logado = true;
-      } else {
-        alert("Preencha os campos corretamente");
-      }
-    }
-
-    function depositar() {
-      if(logado){
-        saldo += 100;
-        atualizarSaldo();
-      }
-    }
-
-    function atualizarSaldo() {
-      document.getElementById("saldo").textContent = saldo;
-    }
-
-    function filtrarJogos() {
-      const input = document.getElementById("searchInput").value.toLowerCase();
-      const jogos = document.querySelectorAll(".game");
-      jogos.forEach(jogo => {
-        const provedor = jogo.getAttribute("data-provedor").toLowerCase();
-        jogo.style.display = provedor.includes(input) ? "block" : "none";
-      });
-    }
-
-    function mostrarJogo(tipo) {
-      const titles = {
-        slots: "Jogo de Slots",
-        roleta: "Roleta Online",
-        blackjack: "Blackjack 21",
-        crash: "Crash Game",
-        dados: "Jogo de Dados"
-      };
-      const descriptions = {
-        slots: "Gire os rolos e vença combinando símbolos da sorte!",
-        roleta: "Escolha seu número da sorte e teste seu destino na roleta!",
-        blackjack: "Tente fazer 21 sem estourar e vença o dealer!",
-        crash: "Multiplique seu saldo, mas saiba a hora de parar antes que exploda!",
-        dados: "Role os dados e aposte no seu palpite para ganhar."
-      };
-      document.getElementById("gameTitle").textContent = titles[tipo];
-      document.getElementById("gameDescription").textContent = descriptions[tipo];
-      document.getElementById("gameContent").style.display = 'block';
-      window.scrollTo({ top: document.getElementById("gameContent").offsetTop, behavior: 'smooth' });
-    }
-  </script>
+    <footer>
+        &copy; 2025 Slot Max Cassino. Todos os direitos reservados.
+    </footer>
 </body>
+
 </html>

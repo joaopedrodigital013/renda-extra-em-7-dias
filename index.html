@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Slot Max é seu cassino online com jogos como Sweet Bonanza, Gates of Olympus e Lightning Roulette. Jogue agora!">
   <title>Slot Max - Cassino Online</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/10688/10688279.png" />
   <style>
     body {
@@ -14,30 +14,38 @@
       color: white;
       font-family: 'Segoe UI', sans-serif;
     }
+
     .navbar {
       background-color: #081630;
     }
+
     .navbar-brand {
       color: gold;
       font-weight: bold;
       font-size: 1.5rem;
     }
+
     .nav-link {
       color: white;
     }
+
     .nav-link:hover {
       color: gold;
     }
-    .login-container {
+
+    .login-container,
+    .deposit-container {
       max-width: 400px;
       margin: 40px auto;
       background-color: #122544;
       padding: 20px;
       border-radius: 10px;
     }
+
     .btn-warning {
       width: 100%;
     }
+
     .game-card {
       background-color: #10233e;
       border-radius: 10px;
@@ -46,18 +54,18 @@
       transition: transform 0.3s;
       height: 100%;
     }
+
     .game-card:hover {
       transform: scale(1.05);
     }
+
     .game-card img {
       width: 100%;
       border-radius: 10px;
       height: 150px;
       object-fit: cover;
     }
-    .game-card h5 {
-      color: gold;
-    }
+
     footer {
       margin-top: 40px;
       padding: 20px;
@@ -67,15 +75,13 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="#">Slot Max - Cassino Online</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <a class="navbar-brand" href="#">Slot Max</a>
+      <div class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#slots">Slots</a></li>
           <li class="nav-item"><a class="nav-link" href="#roleta">Roleta</a></li>
@@ -83,29 +89,37 @@
           <li class="nav-item"><a class="nav-link" href="#crash">Crash</a></li>
           <li class="nav-item"><a class="nav-link" href="#dados">Dados</a></li>
           <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="#deposito">Depósito</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- Login Section -->
-  <form id="login" class="login-container">
+  <div class="login-container" id="login">
     <h4 class="text-center mb-3">Login / Cadastro</h4>
-    <div class="mb-2">
-      <label for="email" class="form-label">E-mail</label>
-      <input type="email" id="email" placeholder="Digite seu e-mail" class="form-control" required />
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Senha</label>
-      <input type="password" id="password" placeholder="Senha" class="form-control" required />
-    </div>
-    <button type="submit" class="btn btn-warning">Entrar</button>
-  </form>
+    <input type="email" placeholder="Digite seu e-mail" class="form-control mb-2" />
+    <input type="password" placeholder="Senha" class="form-control mb-3" />
+    <button class="btn btn-warning">Entrar</button>
+  </div>
+
+  <!-- Depósito -->
+  <div class="deposit-container" id="deposito">
+    <h4 class="text-center mb-3">Depósito</h4>
+    <input type="number" placeholder="Valor (R$)" class="form-control mb-2" />
+    <select class="form-control mb-3">
+      <option>PIX</option>
+      <option>Cartão de Crédito</option>
+      <option>Boleto</option>
+      <option>Criptomoeda</option>
+    </select>
+    <button class="btn btn-warning">Depositar</button>
+  </div>
 
   <!-- Jogos Populares -->
-  <div class="container mt-5">
+  <div class="container mt-5" id="slots">
     <h3 class="text-center mb-4">Jogos Populares</h3>
-    <div class="row g-3 d-flex align-items-stretch">
+    <div class="row g-3">
       <div class="col-md-4">
         <div class="game-card">
           <img src="https://img-cdn.xy138.com/xy138/slot/pragmaticplay/sweetbonanza.jpg" alt="Sweet Bonanza" />
@@ -135,17 +149,8 @@
 
   <!-- Footer -->
   <footer>
-    © 2025 Slot Max Cassino. Todos os direitos reservados.
+    © 2025 Slot Max. Todos os direitos reservados.
   </footer>
-
-  <!-- Scripts Bootstrap e login simulado -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.querySelector("form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      alert("Login simulado com sucesso!");
-      // window.location.href = "painel.html"; // Descomente para redirecionar
-    });
-  </script>
 </body>
+
 </html>

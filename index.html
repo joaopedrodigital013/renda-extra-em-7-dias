@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slot Max - Cassino Online</title>
+  <link rel="icon" href="https://img.icons8.com/fluency/48/slot-machine.png">
+  <meta name="description" content="Slot Max é um cassino online com jogos como slots, roleta, blackjack e crash. Aproveite agora!">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -67,6 +69,11 @@
       border-radius: 5px;
       cursor: pointer;
       margin-top: 10px;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #ffd700;
+      transform: scale(1.05);
     }
     .wallet { text-align: center; margin: 20px 0; }
     .games {
@@ -131,7 +138,7 @@
   </style>
 </head>
 <body>
-  <header>🎰 Slot Max - Cassino Online</header>
+  <header>Slot Max - Cassino Online</header>
 
   <nav>
     <a href="#slots">Slots</a>
@@ -151,20 +158,20 @@
     </section>
 
     <section class="wallet" id="wallet" style="display:none">
-      <h3>💰 Saldo: R$ <span id="saldo">1000</span></h3>
+      <h3>Saldo: R$ <span id="saldo">1000</span></h3>
       <button onclick="depositar()">Depositar R$100</button>
     </section>
 
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="🔍 Pesquisar por provedora..." onkeyup="filtrarJogos()">
+      <input type="text" id="searchInput" placeholder="Pesquisar por provedora..." onkeyup="filtrarJogos()">
     </div>
 
     <section class="games" id="gameList">
-      <div class="game" onclick="mostrarJogo('slots')" data-provedor="SlotMax">
+      <div class="game" onclick="mostrarJogo('slots')" data-provedor="PP">
         <img src="https://img.icons8.com/fluency/96/slot-machine.png" alt="Slots">
         <h3>Slots</h3>
       </div>
-      <div class="game" onclick="mostrarJogo('roleta')" data-provedor="RoletaPro">
+      <div class="game" onclick="mostrarJogo('roleta')" data-provedor="PG">
         <img src="https://img.icons8.com/fluency/96/roulette.png" alt="Roleta">
         <h3>Roleta</h3>
       </div>
@@ -231,11 +238,11 @@
 
     function mostrarJogo(tipo) {
       const titles = {
-        slots: "🎰 Jogo de Slots",
-        roleta: "🎯 Roleta Online",
-        blackjack: "🃏 Blackjack 21",
-        crash: "🚀 Crash Game",
-        dados: "🎲 Jogo de Dados"
+        slots: "Jogo de Slots",
+        roleta: "Roleta Online",
+        blackjack: "Blackjack 21",
+        crash: "Crash Game",
+        dados: "Jogo de Dados"
       };
       const descriptions = {
         slots: "Gire os rolos e vença combinando símbolos da sorte!",

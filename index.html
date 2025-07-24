@@ -20,35 +20,41 @@
     }
 
     section {
-      max-width: 960px;
+      max-width: 1200px;
       margin: auto;
       padding: 30px 20px;
     }
 
-    .solucao {
+    .grid-solucoes {
       display: flex;
-      align-items: center;
-      margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .solucao {
       background: white;
-      padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      width: 280px;
+      text-align: center;
     }
 
     .solucao img {
-      width: 80px;
+      width: 60px;
       height: auto;
-      margin-right: 20px;
+      margin-bottom: 10px;
     }
 
     .solucao h3 {
-      margin: 0 0 8px;
-      font-size: 20px;
+      margin: 10px 0 8px;
+      font-size: 18px;
       color: #6A0DAD;
     }
 
     form {
-      background: #fff;
+      background: #e7f0ff;
       padding: 25px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.08);
@@ -56,6 +62,12 @@
       flex-direction: column;
       gap: 15px;
       margin-top: 40px;
+    }
+
+    form h2 {
+      margin-top: 0;
+      color: #222;
+      text-align: center;
     }
 
     input {
@@ -66,7 +78,7 @@
     }
 
     button {
-      background-color: #6A0DAD;
+      background-color: #28a745;
       color: white;
       padding: 12px;
       font-size: 16px;
@@ -78,16 +90,12 @@
     .erro {
       color: red;
       font-size: 14px;
+      text-align: center;
     }
 
     @media (max-width: 768px) {
       .solucao {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .solucao img {
-        margin-bottom: 10px;
+        width: 100%;
       }
     }
   </style>
@@ -99,51 +107,41 @@
 </header>
 
 <section>
-  <div class="solucao">
-    <img src="cartao-alimentacao.png" alt="Cartão Alimentação" />
-    <div>
+  <div class="grid-solucoes">
+    <div class="solucao">
+      <img src="cartao-alimentacao.png" alt="Cartão Alimentação" />
       <h3>Cartão Alimentação</h3>
-      <p>Ideal para compras em supermercados, hortifrutis e mercearias. Garante uma alimentação básica de qualidade.</p>
+      <p>Liberdade para comprar alimentos em supermercados e hortifrutis.</p>
     </div>
-  </div>
 
-  <div class="solucao">
-    <img src="cartao-refeicao.png" alt="Cartão Refeição" />
-    <div>
+    <div class="solucao">
+      <img src="cartao-refeicao.png" alt="Cartão Refeição" />
       <h3>Cartão Refeição</h3>
-      <p>Aceito em restaurantes e lanchonetes. Solução prática para refeições fora de casa.</p>
+      <p>Use em restaurantes, lanchonetes e deliverys.</p>
     </div>
-  </div>
 
-  <div class="solucao">
-    <img src="home-office.png" alt="Auxílio Home Office" />
-    <div>
+    <div class="solucao">
+      <img src="home-office.png" alt="Auxílio Home Office" />
       <h3>Auxílio Home Office</h3>
-      <p>Ajuda com internet, energia e estrutura de trabalho para colaboradores remotos.</p>
+      <p>Suporte ao trabalho remoto com praticidade e economia.</p>
     </div>
-  </div>
 
-  <div class="solucao">
-    <img src="mobilidade.png" alt="Cartão Mobilidade" />
-    <div>
+    <div class="solucao">
+      <img src="mobilidade.png" alt="Cartão Mobilidade" />
       <h3>Cartão Mobilidade</h3>
-      <p>Deslocamento com apps de transporte, combustível ou transporte público.</p>
+      <p>Facilite deslocamentos com uso em apps e transporte público.</p>
     </div>
-  </div>
 
-  <div class="solucao">
-    <img src="multibeneficios.png" alt="Cartão Multibenefícios" />
-    <div>
+    <div class="solucao">
+      <img src="multibeneficios.png" alt="Cartão Multibenefícios" />
       <h3>Cartão Multibenefícios</h3>
-      <p>Alimentação, home office, mobilidade e muito mais em um único cartão.</p>
+      <p>Versatilidade para todas as necessidades do seu time.</p>
     </div>
-  </div>
 
-  <div class="solucao">
-    <img src="cultura.png" alt="Cartão Cultura" />
-    <div>
+    <div class="solucao">
+      <img src="cultura.png" alt="Cartão Cultura" />
       <h3>Cartão Cultura</h3>
-      <p>Uso em cinemas, teatros, eventos e livros. Incentiva o bem-estar intelectual.</p>
+      <p>Acesso à cultura com uso em cinemas, livros, eventos e mais.</p>
     </div>
   </div>
 
@@ -155,7 +153,7 @@
     <input type="text" id="cnpj" placeholder="CNPJ da empresa" required />
     <input type="number" id="colaboradores" placeholder="Qtd. de colaboradores" required />
     <span id="erro" class="erro"></span>
-    <button type="submit">Solicitar proposta</button>
+    <button type="submit">Solicite uma proposta</button>
   </form>
 </section>
 
@@ -172,16 +170,12 @@
 
     erro.textContent = "";
     alert("Proposta enviada com sucesso! Um consultor entrará em contato.");
-    // Aqui você pode adicionar integração com WhatsApp, Email ou banco de dados
+    // Aqui você pode integrar com banco de dados, WhatsApp ou email
   });
 
   function validarCNPJ(cnpj) {
     cnpj = cnpj.replace(/[^\d]+/g, '');
-
-    if (cnpj.length !== 14) return false;
-
-    // Elimina CNPJs inválidos conhecidos
-    if (/^(\d)\1+$/.test(cnpj)) return false;
+    if (cnpj.length !== 14 || /^(\d)\1+$/.test(cnpj)) return false;
 
     let t = cnpj.length - 2,
         d = cnpj.substring(t),
@@ -194,7 +188,6 @@
           }
           return n % 11 < 2 ? 0 : 11 - (n % 11);
         };
-
     return calc(t) === d1 && calc(t + 1) === d2;
   }
 </script>

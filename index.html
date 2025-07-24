@@ -8,21 +8,26 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #f4f7fa;
-      color: #001F3F;
+      background-color: #f5f7f9;
+      color: #333;
     }
 
     header {
-      background-color: #001f3f; /* Azul escuro */
+      background-color: #002F5F; /* Azul escuro */
       color: white;
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
     }
 
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
     section {
-      max-width: 960px;
+      max-width: 1000px;
       margin: auto;
-      padding: 30px 20px;
+      padding: 40px 20px;
     }
 
     .solucao {
@@ -31,8 +36,13 @@
       margin-bottom: 30px;
       background: white;
       padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .solucao:hover {
+      transform: translateY(-5px);
     }
 
     .solucao img {
@@ -43,42 +53,50 @@
 
     .solucao h3 {
       margin: 0 0 8px;
-      font-size: 20px;
-      color: #00FFB3; /* Verde Pluxee */
+      font-size: 22px;
+      color: #4CAF50; /* Verde claro */
+    }
+
+    .solucao p {
+      margin: 0;
     }
 
     form {
-      background: #ffffff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       display: flex;
       flex-direction: column;
       gap: 15px;
       margin-top: 40px;
     }
 
+    form h2 {
+      color: #002F5F;
+      margin-bottom: 10px;
+    }
+
     input {
-      padding: 12px;
-      border-radius: 6px;
+      padding: 14px;
+      border-radius: 8px;
       border: 1px solid #ccc;
       font-size: 16px;
     }
 
     button {
-      background-color: #00FFB3; /* Verde Pluxee */
-      color: #001f3f;
-      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px;
       font-size: 16px;
-      font-weight: bold;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s ease;
     }
 
     button:hover {
-      background-color: #00d49a;
+      background-color: #45a047;
     }
 
     .erro {
@@ -178,12 +196,13 @@
 
     erro.textContent = "";
     alert("Proposta enviada com sucesso! Um consultor entrará em contato.");
-    // Aqui você pode adicionar integração com WhatsApp, Email ou banco de dados
+    // Aqui você pode integrar com WhatsApp, email ou outro backend
   });
 
   function validarCNPJ(cnpj) {
     cnpj = cnpj.replace(/[^\d]+/g, '');
-    if (cnpj.length !== 14 || /^(\d)\1+$/.test(cnpj)) return false;
+    if (cnpj.length !== 14) return false;
+    if (/^(\d)\1+$/.test(cnpj)) return false;
 
     let t = cnpj.length - 2,
         d = cnpj.substring(t),

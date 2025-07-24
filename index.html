@@ -1,110 +1,160 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Benefícios Pluxee - Parceiro Oficial</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parceiro Oficial Pluxee</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #1e1e2f;
+    }
+    header {
+      background-color: #00284e;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+    .hero {
+      background-color: #00e676;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .hero h1 {
+      color: #00284e;
+      font-size: 2.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    .solucoes {
+      padding: 3rem 2rem;
+      background: #f5f5f5;
+    }
+    .solucoes h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #00284e;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .card img {
+      width: 100%;
+      max-height: 140px;
+      object-fit: contain;
+    }
+    .card h3 {
+      color: #00284e;
+    }
+    footer {
+      background: #e3f2fd;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+    }
+    .form-container input {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .form-container button {
+      background-color: #00e676;
+      color: #00284e;
+      font-weight: bold;
+      padding: 0.75rem 2rem;
+      border: none;
+      cursor: pointer;
+      margin-top: 1rem;
+      border-radius: 4px;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
-
-  <!-- Header -->
-  <header class="bg-purple-700 text-white py-6 shadow-md">
-    <div class="container mx-auto px-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Parceiro Oficial Pluxee</h1>
-      <nav>
-        <ul class="flex space-x-6">
-          <li><a href="#solucoes" class="hover:underline">Soluções</a></li>
-          <li><a href="#sobre" class="hover:underline">Quem Somos</a></li>
-          <li><a href="#contato" class="hover:underline">Contato</a></li>
-        </ul>
-      </nav>
-    </div>
+<body>
+  <header>
+    <h1>Parceiro Oficial Pluxee</h1>
+    <nav>
+      <a href="#solucoes">Soluções</a>
+      <a href="#contato">Contato</a>
+    </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="bg-yellow-400 py-20 text-center text-purple-800">
-    <h2 class="text-4xl font-bold mb-4">Soluções inteligentes para empresas modernas</h2>
-    <p class="text-xl">Transforme a gestão de benefícios da sua equipe com quem entende do assunto</p>
+  <section class="hero">
+    <h1>Soluções inteligentes para empresas modernas</h1>
+    <p>Transforme a gestão de benefícios com quem entende do assunto</p>
   </section>
 
-  <!-- Soluções -->
-  <section id="solucoes" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <h3 class="text-3xl font-bold text-center text-purple-800 mb-12">Nossas Soluções</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-        <!-- Alimentação -->
-        <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-xl transition">
-          <img src="/mnt/data/676f915b-836b-44ac-9cdb-b685fc3ce7ba.png" alt="Cartão Alimentação" class="mb-4 rounded-lg">
-          <h4 class="text-xl font-semibold text-purple-700">Cartão Alimentação</h4>
-          <p class="mt-2 text-gray-700">Ofereça liberdade de escolha para seus colaboradores comprarem alimentos em supermercados e hortifrutis.</p>
-        </div>
-
-        <!-- Refeição -->
-        <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-xl transition">
-          <img src="/mnt/data/1b312d21-5b9b-4203-940e-8e68ade53df4.png" alt="Cartão Refeição" class="mb-4 rounded-lg">
-          <h4 class="text-xl font-semibold text-purple-700">Cartão Refeição</h4>
-          <p class="mt-2 text-gray-700">Benefício ideal para refeições em restaurantes, lanchonetes e delivery, com aceitação nacional.</p>
-        </div>
-
-        <!-- Home Office -->
-        <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-xl transition">
-          <img src="/mnt/data/94071786-4e66-453f-8635-e901464a9629.png" alt="Cartão Home Office" class="mb-4 rounded-lg">
-          <h4 class="text-xl font-semibold text-purple-700">Auxílio Home Office</h4>
-          <p class="mt-2 text-gray-700">Apoie seus colaboradores com os custos do trabalho remoto, garantindo estrutura e produtividade.</p>
-        </div>
-
-        <!-- Mobilidade -->
-        <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-xl transition">
-          <img src="/mnt/data/187a1468-e000-406f-9c9e-8c1644e1697c.png" alt="Cartão Mobilidade" class="mb-4 rounded-lg">
-          <h4 class="text-xl font-semibold text-purple-700">Cartão Mobilidade</h4>
-          <p class="mt-2 text-gray-700">Facilite o deslocamento da sua equipe com um benefício flexível e aceito em apps de transporte, combustível e mais.</p>
-        </div>
-
-        <!-- Multibenefícios -->
-        <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-xl transition">
-          <img src="/mnt/data/f2658d30-d51d-4b6b-96a9-6047162dd82b.png" alt="Cartão Multibenefícios" class="mb-4 rounded-lg">
-          <h4 class="text-xl font-semibold text-purple-700">Cartão Multibenefícios</h4>
-          <p class="mt-2 text-gray-700">Ofereça um cartão versátil que pode ser usado em diversas categorias de consumo com total controle pela empresa.</p>
-        </div>
-
-        <!-- Cultura -->
-        <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-xl transition">
-          <img src="/mnt/data/b348c863-ce2b-4256-aa7d-7ff0bc60cbf8.png" alt="Cartão Cultura" class="mb-4 rounded-lg">
-          <h4 class="text-xl font-semibold text-purple-700">Cartão Cultura</h4>
-          <p class="mt-2 text-gray-700">Incentive o acesso à cultura com um benefício que pode ser usado em livros, cinemas, teatros, cursos e muito mais.</p>
-        </div>
-
+  <section class="solucoes" id="solucoes">
+    <h2>Nossas Soluções</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="./alimentacao.png" alt="Cartão Alimentação">
+        <h3>Cartão Alimentação</h3>
+        <p>Liberdade para comprar alimentos em supermercados e hortifrutis.</p>
+      </div>
+      <div class="card">
+        <img src="./refeicao.png" alt="Cartão Refeição">
+        <h3>Cartão Refeição</h3>
+        <p>Use em restaurantes, lanchonetes e deliverys.</p>
+      </div>
+      <div class="card">
+        <img src="./homeoffice.png" alt="Cartão Home Office">
+        <h3>Auxílio Home Office</h3>
+        <p>Suporte ao trabalho remoto com praticidade e economia.</p>
+      </div>
+      <div class="card">
+        <img src="./mobilidade.png" alt="Cartão Mobilidade">
+        <h3>Cartão Mobilidade</h3>
+        <p>Facilite deslocamentos com uso em apps e transporte público.</p>
+      </div>
+      <div class="card">
+        <img src="./multibeneficios.png" alt="Cartão Multibenefícios">
+        <h3>Cartão Multibenefícios</h3>
+        <p>Versatilidade para todas as necessidades do seu time.</p>
+      </div>
+      <div class="card">
+        <img src="./cultura.png" alt="Cartão Cultura">
+        <h3>Cartão Cultura</h3>
+        <p>Acesso à cultura com uso em cinemas, livros, eventos e mais.</p>
       </div>
     </div>
   </section>
 
-  <!-- Quem Somos -->
-  <section id="sobre" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4 max-w-4xl text-center">
-      <h3 class="text-3xl font-bold text-purple-800 mb-4">Quem Somos</h3>
-      <p class="text-lg text-gray-700">Somos uma empresa parceira oficial da Pluxee, especialista em conectar empresas aos melhores benefícios do mercado. Nosso compromisso é ajudar você a valorizar seus colaboradores com soluções inteligentes, flexíveis e modernas.</p>
+  <footer id="contato">
+    <h2>Solicite uma proposta</h2>
+    <p>Preencha os dados e receba o contato de um consultor especializado com a melhor oferta para sua empresa.</p>
+    <div class="form-container">
+      <input type="text" placeholder="Nome">
+      <input type="email" placeholder="Email">
+      <input type="text" placeholder="Melhor número para contato">
+      <input type="text" placeholder="CNPJ">
+      <input type="text" placeholder="Quantidade de Funcionários">
+      <button>Solicite uma proposta</button>
     </div>
-  </section>
-
-  <!-- Contato -->
-  <section id="contato" class="py-16 bg-white">
-    <div class="container mx-auto px-4 max-w-2xl">
-      <h3 class="text-3xl font-bold text-purple-800 text-center mb-8">Entre em Contato</h3>
-      <form class="bg-gray-100 p-6 rounded-xl shadow-md space-y-4">
-        <input type="text" placeholder="Seu nome" class="w-full p-3 rounded border border-gray-300" required>
-        <input type="email" placeholder="Seu e-mail" class="w-full p-3 rounded border border-gray-300" required>
-        <textarea placeholder="Sua mensagem" rows="4" class="w-full p-3 rounded border border-gray-300"></textarea>
-        <button type="submit" class="w-full bg-purple-700 hover:bg-purple-800 text-white py-3 rounded font-semibold">Enviar mensagem</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-purple-700 text-white text-center py-6">
-    <p>&copy; 2025 | Empresa Parceira Pluxee. Todos os direitos reservados.</p>
   </footer>
-
 </body>
 </html>

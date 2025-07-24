@@ -8,53 +8,47 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: #f4f7fa;
+      color: #001F3F;
     }
 
     header {
-      background-color: #6A0DAD;
+      background-color: #001f3f; /* Azul escuro */
       color: white;
       padding: 20px;
       text-align: center;
     }
 
     section {
-      max-width: 1200px;
+      max-width: 960px;
       margin: auto;
       padding: 30px 20px;
     }
 
-    .grid-solucoes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
     .solucao {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
       background: white;
+      padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      padding: 20px;
-      width: 280px;
-      text-align: center;
     }
 
     .solucao img {
-      width: 60px;
+      width: 80px;
       height: auto;
-      margin-bottom: 10px;
+      margin-right: 20px;
     }
 
     .solucao h3 {
-      margin: 10px 0 8px;
-      font-size: 18px;
-      color: #6A0DAD;
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: #00FFB3; /* Verde Pluxee */
     }
 
     form {
-      background: #e7f0ff;
+      background: #ffffff;
       padding: 25px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.08);
@@ -62,12 +56,6 @@
       flex-direction: column;
       gap: 15px;
       margin-top: 40px;
-    }
-
-    form h2 {
-      margin-top: 0;
-      color: #222;
-      text-align: center;
     }
 
     input {
@@ -78,24 +66,34 @@
     }
 
     button {
-      background-color: #28a745;
-      color: white;
+      background-color: #00FFB3; /* Verde Pluxee */
+      color: #001f3f;
       padding: 12px;
       font-size: 16px;
+      font-weight: bold;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00d49a;
     }
 
     .erro {
       color: red;
       font-size: 14px;
-      text-align: center;
     }
 
     @media (max-width: 768px) {
       .solucao {
-        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .solucao img {
+        margin-bottom: 10px;
       }
     }
   </style>
@@ -107,41 +105,51 @@
 </header>
 
 <section>
-  <div class="grid-solucoes">
-    <div class="solucao">
-      <img src="cartao-alimentacao.png" alt="Cartão Alimentação" />
+  <div class="solucao">
+    <img src="cartao-alimentacao.png" alt="Cartão Alimentação" />
+    <div>
       <h3>Cartão Alimentação</h3>
-      <p>Liberdade para comprar alimentos em supermercados e hortifrutis.</p>
+      <p>Ideal para compras em supermercados, hortifrutis e mercearias. Garante uma alimentação básica de qualidade.</p>
     </div>
+  </div>
 
-    <div class="solucao">
-      <img src="cartao-refeicao.png" alt="Cartão Refeição" />
+  <div class="solucao">
+    <img src="cartao-refeicao.png" alt="Cartão Refeição" />
+    <div>
       <h3>Cartão Refeição</h3>
-      <p>Use em restaurantes, lanchonetes e deliverys.</p>
+      <p>Aceito em restaurantes e lanchonetes. Solução prática para refeições fora de casa.</p>
     </div>
+  </div>
 
-    <div class="solucao">
-      <img src="home-office.png" alt="Auxílio Home Office" />
+  <div class="solucao">
+    <img src="home-office.png" alt="Auxílio Home Office" />
+    <div>
       <h3>Auxílio Home Office</h3>
-      <p>Suporte ao trabalho remoto com praticidade e economia.</p>
+      <p>Ajuda com internet, energia e estrutura de trabalho para colaboradores remotos.</p>
     </div>
+  </div>
 
-    <div class="solucao">
-      <img src="mobilidade.png" alt="Cartão Mobilidade" />
+  <div class="solucao">
+    <img src="mobilidade.png" alt="Cartão Mobilidade" />
+    <div>
       <h3>Cartão Mobilidade</h3>
-      <p>Facilite deslocamentos com uso em apps e transporte público.</p>
+      <p>Deslocamento com apps de transporte, combustível ou transporte público.</p>
     </div>
+  </div>
 
-    <div class="solucao">
-      <img src="multibeneficios.png" alt="Cartão Multibenefícios" />
+  <div class="solucao">
+    <img src="multibeneficios.png" alt="Cartão Multibenefícios" />
+    <div>
       <h3>Cartão Multibenefícios</h3>
-      <p>Versatilidade para todas as necessidades do seu time.</p>
+      <p>Alimentação, home office, mobilidade e muito mais em um único cartão.</p>
     </div>
+  </div>
 
-    <div class="solucao">
-      <img src="cultura.png" alt="Cartão Cultura" />
+  <div class="solucao">
+    <img src="cultura.png" alt="Cartão Cultura" />
+    <div>
       <h3>Cartão Cultura</h3>
-      <p>Acesso à cultura com uso em cinemas, livros, eventos e mais.</p>
+      <p>Uso em cinemas, teatros, eventos e livros. Incentiva o bem-estar intelectual.</p>
     </div>
   </div>
 
@@ -153,7 +161,7 @@
     <input type="text" id="cnpj" placeholder="CNPJ da empresa" required />
     <input type="number" id="colaboradores" placeholder="Qtd. de colaboradores" required />
     <span id="erro" class="erro"></span>
-    <button type="submit">Solicite uma proposta</button>
+    <button type="submit">Solicitar proposta</button>
   </form>
 </section>
 
@@ -170,7 +178,7 @@
 
     erro.textContent = "";
     alert("Proposta enviada com sucesso! Um consultor entrará em contato.");
-    // Aqui você pode integrar com banco de dados, WhatsApp ou email
+    // Aqui você pode adicionar integração com WhatsApp, Email ou banco de dados
   });
 
   function validarCNPJ(cnpj) {
@@ -188,6 +196,7 @@
           }
           return n % 11 < 2 ? 0 : 11 - (n % 11);
         };
+
     return calc(t) === d1 && calc(t + 1) === d2;
   }
 </script>

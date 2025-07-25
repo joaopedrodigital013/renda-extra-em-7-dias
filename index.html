@@ -1,130 +1,74 @@
-/* SISTEMA DE PONTO COMPLETO */
-
-// Estrutura básica em Node.js com Express, SQLite e autenticação funcional
-
-// Passo 1: Instale os pacotes necessários:
-// npm init -y
-// npm install express express-session bcrypt sqlite3 body-parser ejs
-
-// Estrutura de arquivos:
-// - app.js (principal)
-// - views/
-//   - login.ejs
-//   - dashboard.ejs
-// - public/
-//   - style.css
-// - database.db (criado automaticamente)
-
-/* app.js */
-const express = require('express');
-const session = require('express-session');
-const bcrypt = require('bcrypt');
-const sqlite3 = require('sqlite3').verbose();
-const bodyParser = require('body-parser');
-const path = require('path');
-
-const app = express();
-const db = new sqlite3.Database('./database.db');
-
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('public'));
-
-app.use(session({
-  secret: 'chave-secreta',
-  resave: false,
-  saveUninitialized: true
-}));
-
-// Cria a tabela de usuários e registros se não existirem
-db.serialize(() => {
-  db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, password TEXT)");
-  db.run("CREATE TABLE IF NOT EXISTS pontos (id INTEGER PRIMARY KEY, user_id INTEGER, data TEXT, chegada TEXT, almoco_saida TEXT, almoco_volta TEXT, saida TEXT)");
-});
-
-// Página inicial de login
-app.get('/', (req, res) => {
-  res.render('login');
-});
-
-// Login
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  db.get("SELECT * FROM users WHERE username = ?", [username], (err, user) => {
-    if (user && bcrypt.compareSync(password, user.password)) {
-      req.session.userId = user.id;
-      res.redirect('/dashboard');
-    } else {
-      res.send('Login inválido. <a href="/">Tente novamente</a>');
-    }
-  });
-});
-
-// Middleware de autenticação
-function auth(req, res, next) {
-  if (!req.session.userId) return res.redirect('/');
-  next();
-}
-
-// Dashboard
-app.get('/dashboard', auth, (req, res) => {
-  const hoje = new Date().toLocaleDateString('pt-BR');
-  db.get("SELECT * FROM pontos WHERE user_id = ? AND data = ?", [req.session.userId, hoje], (err, ponto) => {
-    res.render('dashboard', { ponto, hoje });
-  });
-});
-
-// Função para obter hora de Brasília
-function horaBrasilia() {
-  return new Date().toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-}
-
-// Bater ponto
-app.post('/ponto/:acao', auth, (req, res) => {
-  const userId = req.session.userId;
-  const acao = req.params.acao;
-  const hoje = new Date().toLocaleDateString('pt-BR');
-  const hora = horaBrasilia();
-
-  db.get("SELECT * FROM pontos WHERE user_id = ? AND data = ?", [userId, hoje], (err, row) => {
-    if (!row) {
-      const campos = { chegada: '', almoco_saida: '', almoco_volta: '', saida: '' };
-      campos[acao] = hora;
-      db.run("INSERT INTO pontos (user_id, data, chegada, almoco_saida, almoco_volta, saida) VALUES (?, ?, ?, ?, ?, ?)",
-        [userId, hoje, campos.chegada, campos.almoco_saida, campos.almoco_volta, campos.saida], () => res.redirect('/dashboard'));
-    } else {
-      db.run(`UPDATE pontos SET ${acao} = ? WHERE id = ?`, [hora, row.id], () => res.redirect('/dashboard'));
-    }
-  });
-});
-
-// Logout
-app.get('/logout', (req, res) => {
-  req.session.destroy(() => res.redirect('/'));
-});
-
-// Inicia o servidor
-app.listen(3000, () => console.log('Servidor rodando em http://localhost:3000'));
+/* app.js (sem alterações visuais aqui, permanece igual ao anterior) */
 
 /* login.ejs */
-<form action="/login" method="POST">
-  <h2>Login</h2>
-  <input name="username" placeholder="Usuário" required>
-  <input type="password" name="password" placeholder="Senha" required>
-  <button type="submit">Entrar</button>
-</form>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+  <form action="/login" method="POST" class="bg-white p-8 rounded-xl shadow-md w-80">
+    <h2 class="text-xl font-bold mb-4 text-center">Login</h2>
+    <input name="username" placeholder="Usuário" required class="w-full p-2 border border-gray-300 rounded mb-3">
+    <input type="password" name="password" placeholder="Senha" required class="w-full p-2 border border-gray-300 rounded mb-4">
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Entrar</button>
+  </form>
+</body>
+</html>
 
 /* dashboard.ejs */
-<h2>Registro de Ponto - <%= hoje %></h2>
-<ul>
-  <li>Chegada: <%= ponto?.chegada || '-' %> <form method="POST" action="/ponto/chegada"><button>Bater Chegada</button></form></li>
-  <li>Almoço Saída: <%= ponto?.almoco_saida || '-' %> <form method="POST" action="/ponto/almoco_saida"><button>Bater Saída Almoço</button></form></li>
-  <li>Almoço Volta: <%= ponto?.almoco_volta || '-' %> <form method="POST" action="/ponto/almoco_volta"><button>Voltar do Almoço</button></form></li>
-  <li>Saída Final: <%= ponto?.saida || '-' %> <form method="POST" action="/ponto/saida"><button>Bater Saída</button></form></li>
-</ul>
-<a href="/logout">Sair</a>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Ponto</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-4">
+  <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-6 mt-10">
+    <h2 class="text-2xl font-bold text-center mb-6">Registro de Ponto - <%= hoje %></h2>
 
-/* style.css */
-form, ul { margin: 20px; font-family: Arial }
-button { margin-left: 10px }
-input { display: block; margin: 10px 0 }
+    <div class="grid grid-cols-1 gap-4">
+      <div class="flex justify-between items-center border-b pb-2">
+        <span class="font-medium">🕘 Chegada:</span>
+        <span><%= ponto?.chegada || '-' %></span>
+        <form method="POST" action="/ponto/chegada">
+          <button class="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">Bater</button>
+        </form>
+      </div>
+
+      <div class="flex justify-between items-center border-b pb-2">
+        <span class="font-medium">🍽️ Início do Almoço:</span>
+        <span><%= ponto?.almoco_saida || '-' %></span>
+        <form method="POST" action="/ponto/almoco_saida">
+          <button class="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600">Bater</button>
+        </form>
+      </div>
+
+      <div class="flex justify-between items-center border-b pb-2">
+        <span class="font-medium">🕑 Volta do Almoço:</span>
+        <span><%= ponto?.almoco_volta || '-' %></span>
+        <form method="POST" action="/ponto/almoco_volta">
+          <button class="bg-indigo-500 text-white px-4 py-1 rounded hover:bg-indigo-600">Bater</button>
+        </form>
+      </div>
+
+      <div class="flex justify-between items-center border-b pb-2">
+        <span class="font-medium">🕔 Saída Final:</span>
+        <span><%= ponto?.saida || '-' %></span>
+        <form method="POST" action="/ponto/saida">
+          <button class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">Bater</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="text-center mt-6">
+      <a href="/logout" class="text-blue-600 hover:underline">Sair</a>
+    </div>
+  </div>
+</body>
+</html>
+
+/* style.css (NÃO NECESSÁRIO COM TAILWIND, mas pode adicionar customizações aqui se quiser) */

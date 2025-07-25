@@ -2,13 +2,26 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sistema de Ponto</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-br from-blue-100 to-white min-h-screen flex items-center justify-center px-4">
-  <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
-    <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">Registro de Ponto - <span id="data"></span></h1>
+
+  <div id="login" class="bg-white p-8 rounded-xl shadow-xl w-full max-w-sm">
+    <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Login do Funcionário</h2>
+    <input id="username" type="text" placeholder="Usuário" class="w-full mb-4 px-4 py-2 border rounded" />
+    <input id="password" type="password" placeholder="Senha" class="w-full mb-6 px-4 py-2 border rounded" />
+    <button onclick="fazerLogin()" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Entrar</button>
+    <p id="loginErro" class="text-sm text-red-500 text-center mt-3 hidden">Usuário ou senha inválidos</p>
+  </div>
+
+  <div id="ponto" class="hidden bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
+    <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">
+      Registro de Ponto - <span id="dataHoje"></span>
+    </h1>
+
+    <p class="text-center text-sm text-gray-500 mb-6">Usuário: <span id="usuarioLogado"></span></p>
 
     <div class="space-y-5 text-gray-700 text-lg">
       <div class="flex justify-between items-center">
@@ -36,40 +49,77 @@
       </div>
     </div>
 
-    <div class="mt-8 text-center">
-      <button onclick="limparRegistros()" class="text-sm text-gray-500 hover:underline">Limpar registros</button>
+    <div class="mt-8 text-center space-x-4">
+      <button onclick="limparPonto()" class="text-sm text-gray-500 hover:underline">Limpar registros</button>
+      <button onclick="logout()" class="text-sm text-blue-600 hover:underline">Sair</button>
     </div>
   </div>
 
   <script>
-    const hoje = new Date().toLocaleDateString('pt-BR');
-    document.getElementById('data').textContent = hoje;
+    const usuarios = {
+      joao: '1234',
+      maria: 'abcd',
+      admin: 'admin'
+    };
 
     const campos = ['chegada', 'almoco_saida', 'almoco_volta', 'saida'];
+    const hoje = new Date().toLocaleDateString('pt-BR');
+    let usuarioAtual = null;
+
+    document.getElementById('dataHoje').textContent = hoje;
+
+    function fazerLogin() {
+      const user = document.getElementById('username').value.trim().toLowerCase();
+      const pass = document.getElementById('password').value.trim();
+
+      if (usuarios[user] === pass) {
+        usuarioAtual = user;
+        document.getElementById('login').classList.add('hidden');
+        document.getElementById('ponto').classList.remove('hidden');
+        document.getElementById('usuarioLogado').textContent = user;
+        carregarRegistros();
+      } else {
+        document.getElementById('loginErro').classList.remove('hidden');
+      }
+    }
 
     function registrar(tipo) {
+      if (!usuarioAtual) return;
       const hora = new Date().toLocaleTimeString('pt-BR');
-      localStorage.setItem(`${tipo}_${hoje}`, hora);
+      const chave = `${usuarioAtual}_${tipo}_${hoje}`;
+      localStorage.setItem(chave, hora);
       document.getElementById(tipo).textContent = hora;
     }
 
     function carregarRegistros() {
       campos.forEach(tipo => {
-        const valor = localStorage.getItem(`${tipo}_${hoje}`);
+        const chave = `${usuarioAtual}_${tipo}_${hoje}`;
+        const valor = localStorage.getItem(chave);
         if (valor) {
           document.getElementById(tipo).textContent = valor;
+        } else {
+          document.getElementById(tipo).textContent = '-';
         }
       });
     }
 
-    function limparRegistros() {
+    function limparPonto() {
+      if (!usuarioAtual) return;
       campos.forEach(tipo => {
-        localStorage.removeItem(`${tipo}_${hoje}`);
+        const chave = `${usuarioAtual}_${tipo}_${hoje}`;
+        localStorage.removeItem(chave);
         document.getElementById(tipo).textContent = '-';
       });
     }
 
-    carregarRegistros();
+    function logout() {
+      usuarioAtual = null;
+      document.getElementById('ponto').classList.add('hidden');
+      document.getElementById('login').classList.remove('hidden');
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+      document.getElementById('loginErro').classList.add('hidden');
+    }
   </script>
 </body>
 </html>

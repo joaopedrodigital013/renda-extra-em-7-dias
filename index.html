@@ -1,74 +1,75 @@
-/* app.js (sem alterações visuais aqui, permanece igual ao anterior) */
-
-/* login.ejs */
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Ponto</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-  <form action="/login" method="POST" class="bg-white p-8 rounded-xl shadow-md w-80">
-    <h2 class="text-xl font-bold mb-4 text-center">Login</h2>
-    <input name="username" placeholder="Usuário" required class="w-full p-2 border border-gray-300 rounded mb-3">
-    <input type="password" name="password" placeholder="Senha" required class="w-full p-2 border border-gray-300 rounded mb-4">
-    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Entrar</button>
-  </form>
-</body>
-</html>
+<body class="bg-gradient-to-br from-blue-100 to-white min-h-screen flex items-center justify-center px-4">
+  <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
+    <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">Registro de Ponto - <span id="data"></span></h1>
 
-/* dashboard.ejs */
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Registro de Ponto</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 min-h-screen p-4">
-  <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-6 mt-10">
-    <h2 class="text-2xl font-bold text-center mb-6">Registro de Ponto - <%= hoje %></h2>
-
-    <div class="grid grid-cols-1 gap-4">
-      <div class="flex justify-between items-center border-b pb-2">
-        <span class="font-medium">🕘 Chegada:</span>
-        <span><%= ponto?.chegada || '-' %></span>
-        <form method="POST" action="/ponto/chegada">
-          <button class="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">Bater</button>
-        </form>
+    <div class="space-y-5 text-gray-700 text-lg">
+      <div class="flex justify-between items-center">
+        <span>🕘 Chegada:</span>
+        <span id="chegada">-</span>
+        <button onclick="registrar('chegada')" class="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded">Bater</button>
       </div>
 
-      <div class="flex justify-between items-center border-b pb-2">
-        <span class="font-medium">🍽️ Início do Almoço:</span>
-        <span><%= ponto?.almoco_saida || '-' %></span>
-        <form method="POST" action="/ponto/almoco_saida">
-          <button class="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600">Bater</button>
-        </form>
+      <div class="flex justify-between items-center">
+        <span>🍽️ Início do Almoço:</span>
+        <span id="almoco_saida">-</span>
+        <button onclick="registrar('almoco_saida')" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1 rounded">Bater</button>
       </div>
 
-      <div class="flex justify-between items-center border-b pb-2">
-        <span class="font-medium">🕑 Volta do Almoço:</span>
-        <span><%= ponto?.almoco_volta || '-' %></span>
-        <form method="POST" action="/ponto/almoco_volta">
-          <button class="bg-indigo-500 text-white px-4 py-1 rounded hover:bg-indigo-600">Bater</button>
-        </form>
+      <div class="flex justify-between items-center">
+        <span>🕑 Volta do Almoço:</span>
+        <span id="almoco_volta">-</span>
+        <button onclick="registrar('almoco_volta')" class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-1 rounded">Bater</button>
       </div>
 
-      <div class="flex justify-between items-center border-b pb-2">
-        <span class="font-medium">🕔 Saída Final:</span>
-        <span><%= ponto?.saida || '-' %></span>
-        <form method="POST" action="/ponto/saida">
-          <button class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">Bater</button>
-        </form>
+      <div class="flex justify-between items-center">
+        <span>🕔 Saída Final:</span>
+        <span id="saida">-</span>
+        <button onclick="registrar('saida')" class="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded">Bater</button>
       </div>
     </div>
 
-    <div class="text-center mt-6">
-      <a href="/logout" class="text-blue-600 hover:underline">Sair</a>
+    <div class="mt-8 text-center">
+      <button onclick="limparRegistros()" class="text-sm text-gray-500 hover:underline">Limpar registros</button>
     </div>
   </div>
+
+  <script>
+    const hoje = new Date().toLocaleDateString('pt-BR');
+    document.getElementById('data').textContent = hoje;
+
+    const campos = ['chegada', 'almoco_saida', 'almoco_volta', 'saida'];
+
+    function registrar(tipo) {
+      const hora = new Date().toLocaleTimeString('pt-BR');
+      localStorage.setItem(`${tipo}_${hoje}`, hora);
+      document.getElementById(tipo).textContent = hora;
+    }
+
+    function carregarRegistros() {
+      campos.forEach(tipo => {
+        const valor = localStorage.getItem(`${tipo}_${hoje}`);
+        if (valor) {
+          document.getElementById(tipo).textContent = valor;
+        }
+      });
+    }
+
+    function limparRegistros() {
+      campos.forEach(tipo => {
+        localStorage.removeItem(`${tipo}_${hoje}`);
+        document.getElementById(tipo).textContent = '-';
+      });
+    }
+
+    carregarRegistros();
+  </script>
 </body>
 </html>
-
-/* style.css (NÃO NECESSÁRIO COM TAILWIND, mas pode adicionar customizações aqui se quiser) */

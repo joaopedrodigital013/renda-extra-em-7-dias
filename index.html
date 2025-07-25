@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sistema de Ponto</title>
+  <title>Sistema de Ponto com Admin</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background: linear-gradient(to right, #e0f7fa, #e1f5fe); font-family: sans-serif; }
     .hidden { display: none; }
     .btn-disabled { opacity: 0.5; pointer-events: none; }
+    table td, table th { padding: 0.5rem; border: 1px solid #ccc; }
   </style>
 </head>
 <body class="flex items-center justify-center min-h-screen">
@@ -50,9 +51,27 @@
     <button onclick="logout()" class="mt-6 text-sm text-blue-500">Sair</button>
   </div>
 
-  <!-- SCRIPT -->
+  <!-- PAINEL ADMINISTRATIVO -->
+  <div id="admin-screen" class="hidden bg-white p-6 rounded-lg shadow-lg w-[95%] max-w-5xl overflow-auto">
+    <h2 class="text-xl font-bold mb-4 text-center">Painel Administrativo</h2>
+    <button onclick="logout()" class="mb-4 text-sm text-blue-500">Sair</button>
+    <h3 class="font-semibold mb-2">Criar novo usuário:</h3>
+    <div class="flex gap-2 mb-4">
+      <input type="text" id="novo-usuario" placeholder="Usuário" class="border rounded px-2 py-1" />
+      <input type="text" id="nova-senha" placeholder="Senha" class="border rounded px-2 py-1" />
+      <button onclick="criarUsuario()" class="bg-green-600 text-white px-3 py-1 rounded">Criar</button>
+    </div>
+    <div class="overflow-auto">
+      <h3 class="font-semibold mb-2">Registros de ponto:</h3>
+      <table class="w-full text-sm bg-white border">
+        <thead><tr><th>Usuário</th><th>Data</th><th>Chegada</th><th>Almoço Ida</th><th>Almoço Volta</th><th>Saída</th></tr></thead>
+        <tbody id="tabela-registros"></tbody>
+      </table>
+    </div>
+  </div>
+
   <script>
-    const users = {
+    const users = JSON.parse(localStorage.getItem("users") || '{}') || {
       "admin": { password: "admin123", role: "admin" },
       "joao": { password: "123", role: "user" },
       "maria": { password: "abc", role: "user" }
@@ -61,18 +80,22 @@
     const hoje = new Date().toISOString().split('T')[0];
     document.getElementById("data-hoje").innerText = new Date().toLocaleDateString();
 
+    function saveUsers() {
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
     function login() {
       const user = document.getElementById("login-username").value.trim().toLowerCase();
       const pass = document.getElementById("login-password").value.trim();
-
       if (users[user] && users[user].password === pass) {
         localStorage.setItem("usuarioLogado", user);
         document.getElementById("login-screen").classList.add("hidden");
-        if (users[user].role === "user") {
+        if (users[user].role === "admin") {
+          document.getElementById("admin-screen").classList.remove("hidden");
+          carregarAdmin();
+        } else {
           document.getElementById("ponto-screen").classList.remove("hidden");
           carregarPonto(user);
-        } else {
-          alert("Admin ainda não implementado neste exemplo HTML.");
         }
       } else {
         document.getElementById("login-error").classList.remove("hidden");
@@ -106,6 +129,39 @@
       localStorage.setItem("registros", JSON.stringify(registros));
       document.getElementById(`${tipo}-horario`).innerText = agora;
       document.getElementById(`btn-${tipo}`).classList.add("btn-disabled");
+    }
+
+    function carregarAdmin() {
+      const registros = JSON.parse(localStorage.getItem("registros") || "{}");
+      const tbody = document.getElementById("tabela-registros");
+      tbody.innerHTML = "";
+      Object.entries(registros).forEach(([usuario, datas]) => {
+        Object.entries(datas).forEach(([data, pontos]) => {
+          tbody.innerHTML += `
+            <tr>
+              <td>${usuario}</td>
+              <td>${data}</td>
+              <td>${pontos["chegada"] || ""}</td>
+              <td>${pontos["almoco-ida"] || ""}</td>
+              <td>${pontos["almoco-volta"] || ""}</td>
+              <td>${pontos["saida"] || ""}</td>
+            </tr>`;
+        });
+      });
+    }
+
+    function criarUsuario() {
+      const nome = document.getElementById("novo-usuario").value.trim().toLowerCase();
+      const senha = document.getElementById("nova-senha").value.trim();
+      if (nome && senha && !users[nome]) {
+        users[nome] = { password: senha, role: "user" };
+        saveUsers();
+        alert("Usuário criado com sucesso!");
+        document.getElementById("novo-usuario").value = "";
+        document.getElementById("nova-senha").value = "";
+      } else {
+        alert("Usuário inválido ou já existe.");
+      }
     }
   </script>
 </body>

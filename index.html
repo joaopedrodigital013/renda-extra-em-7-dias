@@ -1,168 +1,258 @@
+# Gerar o arquivo HTML completo conforme solicitado
+html_code = """
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sistema de Ponto com Admin</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema de Ponto</title>
   <style>
-    body { background: linear-gradient(to right, #e0f7fa, #e1f5fe); font-family: sans-serif; }
-    .hidden { display: none; }
-    .btn-disabled { opacity: 0.5; pointer-events: none; }
-    table td, table th { padding: 0.5rem; border: 1px solid #ccc; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #dbeafe, #ffffff);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    input, button, select {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      background-color: #3b82f6;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .painel-ponto button {
+      width: auto;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    .registro {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.4rem 0;
+    }
+
+    .erro {
+      color: red;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .admin-section, .painel-ponto {
+      margin-top: 1rem;
+    }
+
+    .registros-area {
+      margin-top: 1rem;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
   </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
+<body>
 
-  <!-- TELA DE LOGIN -->
-  <div id="login-screen" class="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-md">
-    <h2 class="text-2xl font-bold mb-4 text-center">Login</h2>
-    <input type="text" id="login-username" placeholder="Usuário" class="w-full mb-3 p-2 border rounded" />
-    <input type="password" id="login-password" placeholder="Senha" class="w-full mb-4 p-2 border rounded" />
-    <button onclick="login()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Entrar</button>
-    <p id="login-error" class="text-red-500 text-sm mt-2 hidden">Usuário ou senha incorretos</p>
-  </div>
+<div class="container" id="loginTela">
+  <h2>Login</h2>
+  <input type="text" id="loginUser" placeholder="Usuário"/>
+  <input type="password" id="loginPass" placeholder="Senha"/>
+  <div class="erro" id="loginErro"></div>
+  <button onclick="fazerLogin()">Entrar</button>
+</div>
 
-  <!-- TELA DE REGISTRO DE PONTO -->
-  <div id="ponto-screen" class="hidden flex-col items-center bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-lg">
-    <h2 class="text-xl font-bold mb-4 text-center">Registro de Ponto - <span id="data-hoje"></span></h2>
-    <div class="space-y-3 w-full">
-      <div class="flex justify-between items-center">
-        <span>🕐 Chegada:</span>
-        <span id="chegada-horario">--:--:--</span>
-        <button id="btn-chegada" onclick="baterPonto('chegada')" class="bg-green-500 text-white px-3 py-1 rounded">Bater</button>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>🍽️ Início do Almoço:</span>
-        <span id="almoco-ida-horario">--:--:--</span>
-        <button id="btn-almoco-ida" onclick="baterPonto('almoco-ida')" class="bg-yellow-400 text-white px-3 py-1 rounded">Bater</button>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>🔙 Volta do Almoço:</span>
-        <span id="almoco-volta-horario">--:--:--</span>
-        <button id="btn-almoco-volta" onclick="baterPonto('almoco-volta')" class="bg-purple-500 text-white px-3 py-1 rounded">Bater</button>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>🚪 Saída Final:</span>
-        <span id="saida-horario">--:--:--</span>
-        <button id="btn-saida" onclick="baterPonto('saida')" class="bg-red-500 text-white px-3 py-1 rounded">Bater</button>
-      </div>
-    </div>
-    <button onclick="logout()" class="mt-6 text-sm text-blue-500">Sair</button>
-  </div>
+<div class="container hidden" id="telaFuncionario">
+  <h2>Registro de Ponto</h2>
+  <div class="painel-ponto" id="painelFuncionario"></div>
+  <button onclick="logout()">Sair</button>
+</div>
 
-  <!-- PAINEL ADMINISTRATIVO -->
-  <div id="admin-screen" class="hidden bg-white p-6 rounded-lg shadow-lg w-[95%] max-w-5xl overflow-auto">
-    <h2 class="text-xl font-bold mb-4 text-center">Painel Administrativo</h2>
-    <button onclick="logout()" class="mb-4 text-sm text-blue-500">Sair</button>
-    <h3 class="font-semibold mb-2">Criar novo usuário:</h3>
-    <div class="flex gap-2 mb-4">
-      <input type="text" id="novo-usuario" placeholder="Usuário" class="border rounded px-2 py-1" />
-      <input type="text" id="nova-senha" placeholder="Senha" class="border rounded px-2 py-1" />
-      <button onclick="criarUsuario()" class="bg-green-600 text-white px-3 py-1 rounded">Criar</button>
-    </div>
-    <div class="overflow-auto">
-      <h3 class="font-semibold mb-2">Registros de ponto:</h3>
-      <table class="w-full text-sm bg-white border">
-        <thead><tr><th>Usuário</th><th>Data</th><th>Chegada</th><th>Almoço Ida</th><th>Almoço Volta</th><th>Saída</th></tr></thead>
-        <tbody id="tabela-registros"></tbody>
-      </table>
-    </div>
-  </div>
+<div class="container hidden" id="telaAdmin">
+  <h2>Painel Administrativo</h2>
+  <input type="text" id="novoUsuario" placeholder="Novo usuário"/>
+  <input type="password" id="novaSenha" placeholder="Senha"/>
+  <button onclick="criarFuncionario()">Criar Funcionário</button>
 
-  <script>
-    const users = JSON.parse(localStorage.getItem("users") || '{}') || {
-      "admin": { password: "admin123", role: "admin" },
-      "joao": { password: "123", role: "user" },
-      "maria": { password: "abc", role: "user" }
-    };
+  <div class="registros-area" id="listaFuncionarios"></div>
+  <button onclick="baixarCSV()">Exportar CSV</button>
+  <button onclick="logout()">Sair</button>
+</div>
 
-    const hoje = new Date().toISOString().split('T')[0];
-    document.getElementById("data-hoje").innerText = new Date().toLocaleDateString();
+<script>
+  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || {
+    admin: { senha: "admin123", admin: true }
+  };
 
-    function saveUsers() {
-      localStorage.setItem("users", JSON.stringify(users));
+  function salvarUsuarios() {
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  }
+
+  function fazerLogin() {
+    const user = loginUser.value.trim();
+    const pass = loginPass.value.trim();
+
+    if (!usuarios[user] || usuarios[user].senha !== pass) {
+      loginErro.innerText = "Usuário ou senha incorretos";
+      return;
     }
 
-    function login() {
-      const user = document.getElementById("login-username").value.trim().toLowerCase();
-      const pass = document.getElementById("login-password").value.trim();
-      if (users[user] && users[user].password === pass) {
-        localStorage.setItem("usuarioLogado", user);
-        document.getElementById("login-screen").classList.add("hidden");
-        if (users[user].role === "admin") {
-          document.getElementById("admin-screen").classList.remove("hidden");
-          carregarAdmin();
-        } else {
-          document.getElementById("ponto-screen").classList.remove("hidden");
-          carregarPonto(user);
-        }
-      } else {
-        document.getElementById("login-error").classList.remove("hidden");
+    localStorage.setItem("logado", user);
+    renderizarTela(user);
+  }
+
+  function logout() {
+    localStorage.removeItem("logado");
+    location.reload();
+  }
+
+  function renderizarTela(usuario) {
+    loginTela.classList.add("hidden");
+
+    if (usuarios[usuario].admin) {
+      telaAdmin.classList.remove("hidden");
+      renderAdmin();
+    } else {
+      telaFuncionario.classList.remove("hidden");
+      renderFuncionario(usuario);
+    }
+  }
+
+  function criarFuncionario() {
+    const user = novoUsuario.value.trim();
+    const pass = novaSenha.value.trim();
+    if (!user || !pass) return;
+
+    usuarios[user] = { senha: pass, admin: false };
+    salvarUsuarios();
+    alert("Funcionário criado com sucesso!");
+    novoUsuario.value = "";
+    novaSenha.value = "";
+    renderAdmin();
+  }
+
+  function renderAdmin() {
+    let html = "<h4>Funcionários Cadastrados:</h4>";
+    Object.keys(usuarios).forEach(u => {
+      if (!usuarios[u].admin) {
+        html += `<div><strong>${u}</strong></div>`;
       }
-    }
+    });
+    listaFuncionarios.innerHTML = html;
+  }
 
-    function logout() {
-      localStorage.removeItem("usuarioLogado");
-      location.reload();
-    }
+  function renderFuncionario(user) {
+    const dataHoje = new Date().toLocaleDateString("pt-BR");
+    const registros = JSON.parse(localStorage.getItem("ponto_" + user)) || {};
+    const dia = registros[dataHoje] || {};
 
-    function carregarPonto(user) {
-      const registros = JSON.parse(localStorage.getItem("registros") || "{}");
-      const hojeDados = registros[user]?.[hoje] || {};
-      ["chegada", "almoco-ida", "almoco-volta", "saida"].forEach(tipo => {
-        const horario = hojeDados[tipo];
-        if (horario) {
-          document.getElementById(`${tipo}-horario`).innerText = horario;
-          document.getElementById(`btn-${tipo}`).classList.add("btn-disabled");
-        }
+    const botoes = [
+      ["chegada", "Chegada", "#22c55e"],
+      ["almocoInicio", "Início do Almoço", "#facc15"],
+      ["almocoVolta", "Volta do Almoço", "#8b5cf6"],
+      ["saida", "Saída", "#ef4444"]
+    ];
+
+    let html = "";
+    botoes.forEach(([id, label, cor]) => {
+      const hora = dia[id] || "--:--:--";
+      const desabilitado = dia[id] ? "disabled" : "";
+      html += `
+        <div class="registro">
+          <span>${label}: ${hora}</span>
+          <button style="background:${cor}" onclick="baterPonto('${user}','${id}')" ${desabilitado}>Bater</button>
+        </div>`;
+    });
+
+    painelFuncionario.innerHTML = html;
+  }
+
+  function baterPonto(user, tipo) {
+    const registros = JSON.parse(localStorage.getItem("ponto_" + user)) || {};
+    const hoje = new Date().toLocaleDateString("pt-BR");
+    if (!registros[hoje]) registros[hoje] = {};
+    registros[hoje][tipo] = new Date().toLocaleTimeString("pt-BR");
+    localStorage.setItem("ponto_" + user, JSON.stringify(registros));
+    renderFuncionario(user);
+  }
+
+  function baixarCSV() {
+    let csv = "Usuário,Data,Chegada,Início do Almoço,Volta do Almoço,Saída\\n";
+    Object.keys(usuarios).forEach(user => {
+      if (usuarios[user].admin) return;
+      const pontos = JSON.parse(localStorage.getItem("ponto_" + user)) || {};
+      Object.keys(pontos).forEach(data => {
+        const p = pontos[data];
+        csv += `${user},${data},${p.chegada || ""},${p.almocoInicio || ""},${p.almocoVolta || ""},${p.saida || ""}\\n`;
       });
-    }
+    });
 
-    function baterPonto(tipo) {
-      const user = localStorage.getItem("usuarioLogado");
-      const registros = JSON.parse(localStorage.getItem("registros") || "{}");
-      registros[user] = registros[user] || {};
-      registros[user][hoje] = registros[user][hoje] || {};
-      const agora = new Date().toLocaleTimeString();
-      registros[user][hoje][tipo] = agora;
-      localStorage.setItem("registros", JSON.stringify(registros));
-      document.getElementById(`${tipo}-horario`).innerText = agora;
-      document.getElementById(`btn-${tipo}`).classList.add("btn-disabled");
-    }
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "registros_ponto.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
 
-    function carregarAdmin() {
-      const registros = JSON.parse(localStorage.getItem("registros") || "{}");
-      const tbody = document.getElementById("tabela-registros");
-      tbody.innerHTML = "";
-      Object.entries(registros).forEach(([usuario, datas]) => {
-        Object.entries(datas).forEach(([data, pontos]) => {
-          tbody.innerHTML += `
-            <tr>
-              <td>${usuario}</td>
-              <td>${data}</td>
-              <td>${pontos["chegada"] || ""}</td>
-              <td>${pontos["almoco-ida"] || ""}</td>
-              <td>${pontos["almoco-volta"] || ""}</td>
-              <td>${pontos["saida"] || ""}</td>
-            </tr>`;
-        });
-      });
-    }
+  // Autologin se já estiver logado
+  const logado = localStorage.getItem("logado");
+  if (logado && usuarios[logado]) {
+    renderizarTela(logado);
+  }
+</script>
 
-    function criarUsuario() {
-      const nome = document.getElementById("novo-usuario").value.trim().toLowerCase();
-      const senha = document.getElementById("nova-senha").value.trim();
-      if (nome && senha && !users[nome]) {
-        users[nome] = { password: senha, role: "user" };
-        saveUsers();
-        alert("Usuário criado com sucesso!");
-        document.getElementById("novo-usuario").value = "";
-        document.getElementById("nova-senha").value = "";
-      } else {
-        alert("Usuário inválido ou já existe.");
-      }
-    }
-  </script>
 </body>
 </html>
+"""
+
+# Salvar como arquivo HTML
+caminho_arquivo = "/mnt/data/sistema_ponto_completo_unico.html"
+with open(caminho_arquivo, "w", encoding="utf-8") as f:
+    f.write(html_code)
+
+caminho_arquivo

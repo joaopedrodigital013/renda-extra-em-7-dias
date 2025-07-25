@@ -1,250 +1,128 @@
-# Gerar o arquivo HTML completo conforme solicitado
-html_code = """
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sistema de Ponto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jogo da Velha</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", sans-serif;
-    }
-
     body {
-      background: linear-gradient(to bottom, #dbeafe, #ffffff);
-      min-height: 100vh;
-      display: flex;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f3f3f3;
+    }
+    h1 {
+      margin-top: 30px;
+    }
+    .tabuleiro {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 5px;
       justify-content: center;
-      align-items: center;
+      margin-top: 20px;
     }
-
-    .container {
-      width: 100%;
-      max-width: 420px;
-      background: white;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    input, button, select {
-      width: 100%;
-      padding: 0.6rem;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    button {
-      background-color: #3b82f6;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background-color: #2563eb;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .painel-ponto button {
-      width: auto;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-    }
-
-    .registro {
+    .celula {
+      width: 100px;
+      height: 100px;
+      font-size: 2.5rem;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin: 0.4rem 0;
+      justify-content: center;
+      background-color: #ffffff;
+      border: 2px solid #333;
+      cursor: pointer;
     }
-
-    .erro {
-      color: red;
-      text-align: center;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+    .celula.vencedor {
+      background-color: #b0f2b6;
     }
-
-    .admin-section, .painel-ponto {
-      margin-top: 1rem;
+    .info {
+      margin-top: 20px;
+      font-size: 1.2rem;
     }
-
-    .registros-area {
-      margin-top: 1rem;
-      max-height: 200px;
-      overflow-y: auto;
-      border: 1px solid #ccc;
-      padding: 0.5rem;
-      border-radius: 8px;
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
+  <h1>Jogo da Velha</h1>
+  <div class="tabuleiro" id="tabuleiro"></div>
+  <div class="info" id="info"></div>
+  <button onclick="reiniciarJogo()">Reiniciar</button>
 
-<div class="container" id="loginTela">
-  <h2>Login</h2>
-  <input type="text" id="loginUser" placeholder="Usuário"/>
-  <input type="password" id="loginPass" placeholder="Senha"/>
-  <div class="erro" id="loginErro"></div>
-  <button onclick="fazerLogin()">Entrar</button>
-</div>
+  <script>
+    const tabuleiro = document.getElementById("tabuleiro");
+    const info = document.getElementById("info");
+    let jogadorAtual = "X";
+    let celulas = ["", "", "", "", "", "", "", "", ""];
+    let fimDeJogo = false;
 
-<div class="container hidden" id="telaFuncionario">
-  <h2>Registro de Ponto</h2>
-  <div class="painel-ponto" id="painelFuncionario"></div>
-  <button onclick="logout()">Sair</button>
-</div>
-
-<div class="container hidden" id="telaAdmin">
-  <h2>Painel Administrativo</h2>
-  <input type="text" id="novoUsuario" placeholder="Novo usuário"/>
-  <input type="password" id="novaSenha" placeholder="Senha"/>
-  <button onclick="criarFuncionario()">Criar Funcionário</button>
-
-  <div class="registros-area" id="listaFuncionarios"></div>
-  <button onclick="baixarCSV()">Exportar CSV</button>
-  <button onclick="logout()">Sair</button>
-</div>
-
-<script>
-  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || {
-    admin: { senha: "admin123", admin: true }
-  };
-
-  function salvarUsuarios() {
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-  }
-
-  function fazerLogin() {
-    const user = loginUser.value.trim();
-    const pass = loginPass.value.trim();
-
-    if (!usuarios[user] || usuarios[user].senha !== pass) {
-      loginErro.innerText = "Usuário ou senha incorretos";
-      return;
-    }
-
-    localStorage.setItem("logado", user);
-    renderizarTela(user);
-  }
-
-  function logout() {
-    localStorage.removeItem("logado");
-    location.reload();
-  }
-
-  function renderizarTela(usuario) {
-    loginTela.classList.add("hidden");
-
-    if (usuarios[usuario].admin) {
-      telaAdmin.classList.remove("hidden");
-      renderAdmin();
-    } else {
-      telaFuncionario.classList.remove("hidden");
-      renderFuncionario(usuario);
-    }
-  }
-
-  function criarFuncionario() {
-    const user = novoUsuario.value.trim();
-    const pass = novaSenha.value.trim();
-    if (!user || !pass) return;
-
-    usuarios[user] = { senha: pass, admin: false };
-    salvarUsuarios();
-    alert("Funcionário criado com sucesso!");
-    novoUsuario.value = "";
-    novaSenha.value = "";
-    renderAdmin();
-  }
-
-  function renderAdmin() {
-    let html = "<h4>Funcionários Cadastrados:</h4>";
-    Object.keys(usuarios).forEach(u => {
-      if (!usuarios[u].admin) {
-        html += `<div><strong>${u}</strong></div>`;
-      }
-    });
-    listaFuncionarios.innerHTML = html;
-  }
-
-  function renderFuncionario(user) {
-    const dataHoje = new Date().toLocaleDateString("pt-BR");
-    const registros = JSON.parse(localStorage.getItem("ponto_" + user)) || {};
-    const dia = registros[dataHoje] || {};
-
-    const botoes = [
-      ["chegada", "Chegada", "#22c55e"],
-      ["almocoInicio", "Início do Almoço", "#facc15"],
-      ["almocoVolta", "Volta do Almoço", "#8b5cf6"],
-      ["saida", "Saída", "#ef4444"]
-    ];
-
-    let html = "";
-    botoes.forEach(([id, label, cor]) => {
-      const hora = dia[id] || "--:--:--";
-      const desabilitado = dia[id] ? "disabled" : "";
-      html += `
-        <div class="registro">
-          <span>${label}: ${hora}</span>
-          <button style="background:${cor}" onclick="baterPonto('${user}','${id}')" ${desabilitado}>Bater</button>
-        </div>`;
-    });
-
-    painelFuncionario.innerHTML = html;
-  }
-
-  function baterPonto(user, tipo) {
-    const registros = JSON.parse(localStorage.getItem("ponto_" + user)) || {};
-    const hoje = new Date().toLocaleDateString("pt-BR");
-    if (!registros[hoje]) registros[hoje] = {};
-    registros[hoje][tipo] = new Date().toLocaleTimeString("pt-BR");
-    localStorage.setItem("ponto_" + user, JSON.stringify(registros));
-    renderFuncionario(user);
-  }
-
-  function baixarCSV() {
-    let csv = "Usuário,Data,Chegada,Início do Almoço,Volta do Almoço,Saída\\n";
-    Object.keys(usuarios).forEach(user => {
-      if (usuarios[user].admin) return;
-      const pontos = JSON.parse(localStorage.getItem("ponto_" + user)) || {};
-      Object.keys(pontos).forEach(data => {
-        const p = pontos[data];
-        csv += `${user},${data},${p.chegada || ""},${p.almocoInicio || ""},${p.almocoVolta || ""},${p.saida || ""}\\n`;
+    function criarTabuleiro() {
+      tabuleiro.innerHTML = "";
+      celulas.forEach((valor, index) => {
+        const div = document.createElement("div");
+        div.classList.add("celula");
+        div.dataset.index = index;
+        div.innerText = valor;
+        div.addEventListener("click", clicarCelula);
+        tabuleiro.appendChild(div);
       });
-    });
+      info.innerText = `Vez do jogador: ${jogadorAtual}`;
+    }
 
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "registros_ponto.csv";
-    a.click();
-    URL.revokeObjectURL(url);
-  }
+    function clicarCelula(e) {
+      const index = e.target.dataset.index;
+      if (celulas[index] !== "" || fimDeJogo) return;
 
-  // Autologin se já estiver logado
-  const logado = localStorage.getItem("logado");
-  if (logado && usuarios[logado]) {
-    renderizarTela(logado);
-  }
-</script>
+      celulas[index] = jogadorAtual;
+      e.target.innerText = jogadorAtual;
 
+      if (verificarVencedor()) {
+        info.innerText = `🎉 Jogador ${jogadorAtual} venceu!`;
+        fimDeJogo = true;
+        return;
+      }
+
+      if (!celulas.includes("")) {
+        info.innerText = "Empate!";
+        fimDeJogo = true;
+        return;
+      }
+
+      jogadorAtual = jogadorAtual === "X" ? "O" : "X";
+      info.innerText = `Vez do jogador: ${jogadorAtual}`;
+    }
+
+    function verificarVencedor() {
+      const combinacoes = [
+        [0,1,2], [3,4,5], [6,7,8],
+        [0,3,6], [1,4,7], [2,5,8],
+        [0,4,8], [2,4,6]
+      ];
+
+      for (let combinacao of combinacoes) {
+        const [a, b, c] = combinacao;
+        if (celulas[a] && celulas[a] === celulas[b] && celulas[a] === celulas[c]) {
+          document.querySelectorAll(".celula")[a].classList.add("vencedor");
+          document.querySelectorAll(".celula")[b].classList.add("vencedor");
+          document.querySelectorAll(".celula")[c].classList.add("vencedor");
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function reiniciarJogo() {
+      jogadorAtual = "X";
+      celulas = ["", "", "", "", "", "", "", "", ""];
+      fimDeJogo = false;
+      criarTabuleiro();
+    }
+
+    criarTabuleiro();
+  </script>
 </body>
 </html>
